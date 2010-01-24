@@ -1,0 +1,1 @@
+The target of this project is to compare the performance of several simple machine learning algorithms on the hand written digit classification task. The attribute of the dataset 
