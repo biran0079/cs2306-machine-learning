@@ -5,7 +5,7 @@ http://yann.lecun.com/exdb/mnist/
 
 This dataset is a subset variable from NIST. The digits have been size-normalized and centered in a fixed-size(28*28) image. 
 It provides 60000 instances in training dataset, and 10000 instances in testing dataset. Each digit is centered in a 28*28 image, and the grey degree is each pixel of the image is represented by an integer between 0 and 255. 0 means white, and 255 means black. Each instance of the data set is represented by a sequence of 285 integers, the first 284 integer are the grey degree of 28*28 pixels, and the last one integer is the label of each image(which digit it is in the image).
-In WEKA, 60000 dataset seems too large to fit into my PC's memory, so I pick the first 30000 instances as training dataset.
+In WEKA, 60000 dataset seems too large to fit into my PC's memory, so I pick the first 30000 instances (denote as MNIST1) as training dataset.
 For testing, I use the provided testing dataset (10000 instances).
 
 Semeion Handwritten Digit Data Set

@@ -1,0 +1,6 @@
+1.Use MNIST1 to build clasifier, test on Semeion.
+	1.1. Scale MNIST1 down to Semeion
+	1.2. Scale Semeion up to MNIST1
+2.Use Semeion to build clasifier, test on MNIST1. 
+	2.1. Scale MNIST1 down to Semeion
+	2.2. Scale Semeion up to MNIST1
