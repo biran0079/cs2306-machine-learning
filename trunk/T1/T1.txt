@@ -1,6 +1,14 @@
 1. Convert dataset into WEKA's arrf format.
 	1.1 MNIST dataset
+The dataset itself is stored in binary file for the purpose of compression. To make modification of dataset easier in the future, fitst comvert it into fuman readable text file.
+MNISTDataToTxt.cpp do this job. For more detail, please refer to the comment of source file.
+
+Then convert text file into WEKA's arff file.
+MNISTTxtToArff.cpp do this job. For more detail, please refer to the comment of source file.
+
 	1.2 Semeion dataset
+This dataset itself is in human readable format. So just need one step to convert it into arff fotmat.
 2. ID3 algorithm
 3. C4.5 algorithm
+
 
