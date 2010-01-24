@@ -1,4 +1,6 @@
 /*
+   INPUT FILE FORMAT:
+
    [offset] [type]          [value]          [description] 
    0000     32 bit integer  0x00000803(2051) magic number 
    0004     32 bit integer  60000            number of images 
@@ -16,6 +18,17 @@
    0009     unsigned byte   ??               label 
    ........ 
    xxxx     unsigned byte   ??               label
+
+
+   OUTPUT FILE FORMAT:
+	each line consists of integers seperated by ','
+	each integer is the grey level of each pixel.
+
+useage:
+	MNISTtoTxt DATA_SET_FLIE DATA_SET_LABEL_FILE 
+	
+	Output into "out.txt" file.
+	Enter number of instance to convert when required.
    */
 #include<stdio.h>
 #include<string.h>
@@ -41,14 +54,19 @@ int msb_to_int(unsigned char*s,int n){
 }
 int min(int a,int b){return a<b?a:b;}
 int abs(int a){return a>0?a:-a;}
-bool can(int i,int j){
-	return true;
-}
 int main(int argc,char** args){
 	int target;
-	input=fopen("t10k-images.idx3-ubyte","rb");
-		ans=fopen("t10k-labels.idx1-ubyte","rb");	
-	out=fopen("MNIST_t10k.txt","w");
+	if(argc!=3){
+		printf("data set filename, label file name filename required\n");
+		return 1;
+	}
+	input=fopen(args[1],"rb");
+	ans=fopen(args[2],"rb");
+	out=fopen("out.txt","w");	
+	if(!input || !ans || !out){
+		printf("fail to open file\n");
+		return 1;
+	}
 	unsigned char s[10];
 	fread(s,1,4,input);
 	fread(s,1,4,input);
@@ -58,12 +76,13 @@ int main(int argc,char** args){
 	fread(s,1,4,input);;
 	int col=msb_to_int(s,4);
 	fread(s,1,8,ans);
-	num=10000;
+	printf("Input the number of instance you want to read:");
+	scanf("%d",&num);
 	for(int i=0;i<num;i++){
 		for(int j=0;j<row;j++){
 			for(int k=0;k<col;k++){
-				if(!can(j,k))continue;
-				fread(s,1,1,input);
+				if(fread(s,1,1,input)!=1)
+					return 1;
 				fprintf(out,"%d,",msb_to_int(s,1));
 			}
 		}
