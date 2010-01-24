@@ -1,0 +1,6 @@
+1. Convert dataset into WEKA's arrf format.
+	1.1 MNIST dataset
+	1.2 Semeion dataset
+2. ID3 algorithm
+3. C4.5 algorithm
+
