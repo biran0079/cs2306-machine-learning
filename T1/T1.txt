@@ -177,6 +177,13 @@ Most serious confusion:
 8->9
 9->4
 
+
+
+
+
+
+
+
 TESTING DATA:
 
 
@@ -272,3 +279,6 @@ Most serious confusion:
 7->1
 8->9
 9->3
+
+
+
