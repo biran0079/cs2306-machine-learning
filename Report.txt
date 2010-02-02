@@ -1,0 +1,43 @@
+Recognize handwritten digit using Decision tree and Bayes Network
+
+Abstruct
+
+Handwritten digits recognition is an important application of machine learning. The objective is to recognize images of handwritten digits based on classification methods for multivariate data. This paper will apply decision tree and Bayes network algorithm on this task, and analyze the performance incluenced by different feature of the dataset.
+
+Introduction
+
+WEKA is be used for training and testing in this paper. Both decision tree(C4.5) and Bayes network algorithm(BayesNet) used in this paper are are provided by WEKA.
+The first section provide a description of the Semeion Handwritten Digit Data Set, which is used for training and testing in this paper. 
+The second section give a brief introduction of decision tree(C4.5) and bayes network algorithm used in this paper.
+The third section compare the performance of the two algorithms on the dataset.
+The forth section deals with overfitting by several techniques.
+The fifth section improves performance by providing exta information of the dataset.
+
+
+DataSet
+
+Semeion Handwritten Digit Data Set is used in this paper. The dataset was created by Tactile Srl, Brescia, Italy (http://www.tattile.it) and donated in 1994 to Semeion Research Center of Sciences of Communication, Rome, Italy (http://www.semeion.it), for machine learning research. 
+1593 handwritten digits from around 80 persons were scanned, stretched in a rectangular box 16x16 in a gray scale of 256 values.Then each pixel of each image was scaled into a bolean (1/0) value using a fixed threshold.
+Each person wrote on a paper all the digits from 0 to 9, twice. The commitment was to write the digit the first time in the normal way (trying to write each digit accurately) and the second time in a fast way (with no accuracy). 
+
+This dataset consists of 1593 records (rows) and 256 attributes (columns).
+Each record represents a handwritten digit, orginally scanned with a resolution of 256 grays scale.
+Each pixel of the each original scanned image was first stretched, and after scaled between 0 and 1 (setting to 0 every pixel whose value was under tha value 127 of the grey scale (127 included) and setting to 1 each pixel whose orinal value in the grey scale was over 127).
+Finally, each binary image was scaled again into a 16x16 square box (the final 256 binary attributes). 
+
+1593 instances is provieded in the dataset, which is not many. To obtain better result of the classification on this dataset, 10-fold cross calidation is used when testing.
+
+To convert it into WEKA accetable form without lossing information of the dataset, I modified the "class label" part into a digit from 0 to 9, and.
+The dataset is given following certain order such that many instances with the same label are close to each other in the file. To avoid it's incluence, the order of instances are shuffled before being read by WEKA.
+
+Algorithm
+
+Decision tree (C4.5)
+Decision tree is a popular machine learning algorithm. It represend a function in form of a tree, each node denote an attrribute, and each edge represent the condition which lead to the next node. Leaves contains labels, which are the result of classification. Decision tree efficient and simple. The tree can be pretty human readable, unlike some algotithms like artificial nueral network. Decision tree is very descriptive, and theoretically, decision tree can represent any function. There are many decision tree algorithms in machine learning, and the decision tree algorithm used in this paper is C4.5, an improved version of ID3 algorithm. C4.5 algorithm follows a simple inductive bias, which is "smaller trees are prefered", which means that smaller trees tend to perform bettwe than bigger trees on unseen dataset. This inductive bias is motivated by Occan Razor principle. C4.5 works well in many cases, and is one of the most popular decision tree algorithm. A free implementation of C4.5 algorithm in java is available in J48 package. J48 is also integrated in WEKA.
+
+Bayes Net
+
+
+Performance
+
+

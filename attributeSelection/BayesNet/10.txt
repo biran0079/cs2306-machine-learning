@@ -1,0 +1,84 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.BayesNet -D -Q weka.classifiers.bayes.net.search.local.K2 -- -P 1 -S BAYES -E weka.classifiers.bayes.net.estimate.SimpleEstimator -- -A 0.5
+Relation:     Semeion-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 199-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 149-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 99-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 49-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 24-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 9
+Instances:    1593
+Attributes:   10
+              a161
+              a177
+              a145
+              a160
+              a144
+              a78
+              a176
+              a193
+              a129
+              ans
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Bayes Network Classifier
+not using ADTree
+#attributes=10 #classindex=9
+Network structure (nodes followed by parents)
+a161(2): ans 
+a177(2): ans 
+a145(2): ans 
+a160(2): ans 
+a144(2): ans 
+a78(2): ans 
+a176(2): ans 
+a193(2): ans 
+a129(2): ans 
+ans(10): 
+LogScore Bayes: -9588.015891537787
+LogScore BDeu: -9836.625850263023
+LogScore MDL: -9796.608698562
+LogScore ENTROPY: -9431.626670221453
+LogScore AIC: -9530.626670221453
+
+
+Time taken to build model: 0.02 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         697               43.7539 %
+Incorrectly Classified Instances       896               56.2461 %
+Kappa statistic                          0.3751
+Mean absolute error                      0.1255
+Root mean squared error                  0.2732
+Relative absolute error                 69.7299 %
+Root relative squared error             91.0673 %
+Total Number of Instances             1593     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.752     0.021      0.801     0.752     0.776      0.952    0
+                 0.049     0.006      0.5       0.049     0.09       0.702    1
+                 0.377     0.068      0.38      0.377     0.379      0.791    2
+                 0.717     0.232      0.256     0.717     0.377      0.805    3
+                 0.398     0.042      0.516     0.398     0.449      0.83     4
+                 0.17      0.038      0.329     0.17      0.224      0.807    5
+                 0.807     0.068      0.57      0.807     0.668      0.947    6
+                 0.19      0.038      0.353     0.19      0.247      0.788    7
+                 0.284     0.044      0.411     0.284     0.336      0.806    8
+                 0.627     0.068      0.505     0.627     0.559      0.877    9
+Weighted Avg.    0.438     0.062      0.463     0.438     0.411      0.831
+
+=== Confusion Matrix ===
+
+   a   b   c   d   e   f   g   h   i   j   <-- classified as
+ 121   3   0   0   9   0   7   0  14   7 |   a = 0
+   0   8  16  52  11  15   0  15  10  35 |   b = 1
+   4   2  60  49   2   0  12   1  19  10 |   c = 2
+   0   0  10 114   0  11   0   2   0  22 |   d = 3
+   2   0   6   5  64   6  42  22   8   6 |   e = 4
+   0   0  11 104   2  27   2  13   0   0 |   f = 5
+   0   0  10   0  12   0 130   0   9   0 |   g = 6
+   0   2  11  70  14  17   3  30   3   8 |   h = 7
+  21   1  31   7   9   1  32   0  44   9 |   i = 8
+   3   0   3  45   1   5   0   2   0  99 |   j = 9
+
