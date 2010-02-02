@@ -1,0 +1,265 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.BayesNet -D -Q weka.classifiers.bayes.net.search.local.K2 -- -P 1 -S BAYES -E weka.classifiers.bayes.net.estimate.SimpleEstimator -- -A 0.5
+Relation:     Semeion-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 199
+Instances:    1593
+Attributes:   200
+              [list of attributes omitted]
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Bayes Network Classifier
+not using ADTree
+#attributes=200 #classindex=199
+Network structure (nodes followed by parents)
+a161(2): ans 
+a177(2): ans 
+a145(2): ans 
+a160(2): ans 
+a144(2): ans 
+a78(2): ans 
+a176(2): ans 
+a193(2): ans 
+a129(2): ans 
+a62(2): ans 
+a94(2): ans 
+a111(2): ans 
+a110(2): ans 
+a81(2): ans 
+a97(2): ans 
+a128(2): ans 
+a95(2): ans 
+a46(2): ans 
+a126(2): ans 
+a127(2): ans 
+a192(2): ans 
+a8(2): ans 
+a7(2): ans 
+a61(2): ans 
+a113(2): ans 
+a228(2): ans 
+a230(2): ans 
+a162(2): ans 
+a229(2): ans 
+a65(2): ans 
+a178(2): ans 
+a77(2): ans 
+a112(2): ans 
+a76(2): ans 
+a231(2): ans 
+a92(2): ans 
+a79(2): ans 
+a82(2): ans 
+a9(2): ans 
+a194(2): ans 
+a6(2): ans 
+a142(2): ans 
+a227(2): ans 
+a66(2): ans 
+a63(2): ans 
+a91(2): ans 
+a146(2): ans 
+a75(2): ans 
+a104(2): ans 
+a96(2): ans 
+a45(2): ans 
+a190(2): ans 
+a98(2): ans 
+a10(2): ans 
+a80(2): ans 
+a209(2): ans 
+a2(2): ans 
+a5(2): ans 
+a158(2): ans 
+a232(2): ans 
+a174(2): ans 
+a90(2): ans 
+a3(2): ans 
+a103(2): ans 
+a49(2): ans 
+a210(2): ans 
+a173(2): ans 
+a102(2): ans 
+a233(2): ans 
+a105(2): ans 
+a106(2): ans 
+a74(2): ans 
+a135(2): ans 
+a47(2): ans 
+a15(2): ans 
+a4(2): ans 
+a60(2): ans 
+a118(2): ans 
+a83(2): ans 
+a107(2): ans 
+a120(2): ans 
+a151(2): ans 
+a119(2): ans 
+a1(2): ans 
+a206(2): ans 
+a93(2): ans 
+a191(2): ans 
+a163(2): ans 
+a89(2): ans 
+a165(2): ans 
+a166(2): ans 
+a245(2): ans 
+a11(2): ans 
+a143(2): ans 
+a50(2): ans 
+a64(2): ans 
+a134(2): ans 
+a226(2): ans 
+a246(2): ans 
+a150(2): ans 
+a67(2): ans 
+a59(2): ans 
+a244(2): ans 
+a179(2): ans 
+a234(2): ans 
+a0(2): ans 
+a188(2): ans 
+a108(2): ans 
+a136(2): ans 
+a167(2): ans 
+a164(2): ans 
+a30(2): ans 
+a237(2): ans 
+a149(2): ans 
+a152(2): ans 
+a101(2): ans 
+a17(2): ans 
+a51(2): ans 
+a88(2): ans 
+a16(2): ans 
+a157(2): ans 
+a34(2): ans 
+a14(2): ans 
+a235(2): ans 
+a58(2): ans 
+a181(2): ans 
+a121(2): ans 
+a207(2): ans 
+a99(2): ans 
+a189(2): ans 
+a182(2): ans 
+a73(2): ans 
+a148(2): ans 
+a44(2): ans 
+a236(2): ans 
+a168(2): ans 
+a130(2): ans 
+a114(2): ans 
+a172(2): ans 
+a156(2): ans 
+a12(2): ans 
+a147(2): ans 
+a137(2): ans 
+a208(2): ans 
+a180(2): ans 
+a247(2): ans 
+a133(2): ans 
+a35(2): ans 
+a187(2): ans 
+a100(2): ans 
+a18(2): ans 
+a36(2): ans 
+a117(2): ans 
+a19(2): ans 
+a153(2): ans 
+a204(2): ans 
+a211(2): ans 
+a225(2): ans 
+a221(2): ans 
+a122(2): ans 
+a52(2): ans 
+a205(2): ans 
+a183(2): ans 
+a238(2): ans 
+a33(2): ans 
+a222(2): ans 
+a175(2): ans 
+a68(2): ans 
+a169(2): ans 
+a29(2): ans 
+a84(2): ans 
+a109(2): ans 
+a13(2): ans 
+a140(2): ans 
+a20(2): ans 
+a141(2): ans 
+a138(2): ans 
+a21(2): ans 
+a31(2): ans 
+a154(2): ans 
+a253(2): ans 
+a159(2): ans 
+a22(2): ans 
+a48(2): ans 
+a203(2): ans 
+a32(2): ans 
+a195(2): ans 
+a87(2): ans 
+a220(2): ans 
+a171(2): ans 
+a123(2): ans 
+a248(2): ans 
+a254(2): ans 
+a243(2): ans 
+a57(2): ans 
+a170(2): ans 
+a186(2): ans 
+a239(2): ans 
+a184(2): ans 
+ans(10): 
+LogScore Bayes: -165886.31994347204
+LogScore BDeu: -170961.53004478512
+LogScore MDL: -169797.46063000069
+LogScore ENTROPY: -162427.77300724632
+LogScore AIC: -164426.77300724626
+
+
+Time taken to build model: 0.17 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        1372               86.1268 %
+Incorrectly Classified Instances       221               13.8732 %
+Kappa statistic                          0.8459
+Mean absolute error                      0.0278
+Root mean squared error                  0.1597
+Relative absolute error                 15.42   %
+Root relative squared error             53.2363 %
+Total Number of Instances             1593     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.957     0.002      0.981     0.957     0.969      0.996    0
+                 0.796     0.04       0.694     0.796     0.741      0.973    1
+                 0.799     0.006      0.941     0.799     0.864      0.988    2
+                 0.881     0.016      0.859     0.881     0.87       0.984    3
+                 0.795     0.012      0.883     0.795     0.837      0.984    4
+                 0.893     0.008      0.928     0.893     0.91       0.995    5
+                 0.913     0.006      0.948     0.913     0.93       0.998    6
+                 0.924     0.026      0.793     0.924     0.854      0.991    7
+                 0.852     0.018      0.835     0.852     0.843      0.987    8
+                 0.804     0.021      0.809     0.804     0.806      0.976    9
+Weighted Avg.    0.861     0.015      0.867     0.861     0.862      0.987
+
+=== Confusion Matrix ===
+
+   a   b   c   d   e   f   g   h   i   j   <-- classified as
+ 154   0   0   0   3   0   0   0   3   1 |   a = 0
+   0 129   5   2   0   4   0  22   0   0 |   b = 1
+   0  14 127   0   5   0   2   0   8   3 |   c = 2
+   0   6   0 140   0   1   0   1   4   7 |   d = 3
+   0  14   1   0 128   2   3   8   0   5 |   e = 4
+   0   1   0   4   2 142   3   4   1   2 |   f = 5
+   2   2   1   0   4   2 147   0   3   0 |   g = 6
+   0   7   0   0   1   0   0 146   0   4 |   h = 7
+   0   7   1   6   0   1   0   0 132   8 |   i = 8
+   1   6   0  11   2   1   0   3   7 127 |   j = 9
+

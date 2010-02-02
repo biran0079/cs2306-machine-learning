@@ -1,0 +1,138 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     Semeion-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 199-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 149-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 99-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 49-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 24-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 9
+Instances:    1593
+Attributes:   10
+              a161
+              a177
+              a145
+              a160
+              a144
+              a78
+              a176
+              a193
+              a129
+              ans
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+a161 <= 0
+|   a78 <= 0
+|   |   a145 <= 0
+|   |   |   a177 <= 0
+|   |   |   |   a193 <= 0
+|   |   |   |   |   a129 <= 0: 3 (368.0/271.0)
+|   |   |   |   |   a129 > 0: 5 (84.0/57.0)
+|   |   |   |   a193 > 0
+|   |   |   |   |   a160 <= 0
+|   |   |   |   |   |   a176 <= 0
+|   |   |   |   |   |   |   a129 <= 0: 2 (79.0/56.0)
+|   |   |   |   |   |   |   a129 > 0: 1 (2.0/1.0)
+|   |   |   |   |   |   a176 > 0: 1 (2.0/1.0)
+|   |   |   |   |   a160 > 0: 5 (2.0)
+|   |   |   a177 > 0
+|   |   |   |   a160 <= 0
+|   |   |   |   |   a176 <= 0
+|   |   |   |   |   |   a129 <= 0: 2 (39.0/17.0)
+|   |   |   |   |   |   a129 > 0: 7 (4.0/2.0)
+|   |   |   |   |   a176 > 0
+|   |   |   |   |   |   a193 <= 0: 1 (5.0/1.0)
+|   |   |   |   |   |   a193 > 0: 5 (24.0/17.0)
+|   |   |   |   a160 > 0: 0 (4.0/3.0)
+|   |   a145 > 0
+|   |   |   a176 <= 0: 7 (85.0/51.0)
+|   |   |   a176 > 0: 8 (5.0/2.0)
+|   a78 > 0
+|   |   a160 <= 0
+|   |   |   a177 <= 0
+|   |   |   |   a193 <= 0: 9 (172.0/76.0)
+|   |   |   |   a193 > 0: 1 (29.0/20.0)
+|   |   |   a177 > 0
+|   |   |   |   a193 <= 0: 1 (2.0)
+|   |   |   |   a193 > 0: 2 (27.0/15.0)
+|   |   a160 > 0
+|   |   |   a145 <= 0: 0 (5.0)
+|   |   |   a145 > 0
+|   |   |   |   a193 <= 0: 0 (6.0/2.0)
+|   |   |   |   a193 > 0: 8 (5.0/1.0)
+a161 > 0
+|   a78 <= 0
+|   |   a193 <= 0
+|   |   |   a129 <= 0
+|   |   |   |   a176 <= 0: 7 (23.0/12.0)
+|   |   |   |   a176 > 0: 1 (19.0/7.0)
+|   |   |   a129 > 0: 4 (84.0/23.0)
+|   |   a193 > 0
+|   |   |   a129 <= 0
+|   |   |   |   a145 <= 0: 2 (42.0/22.0)
+|   |   |   |   a145 > 0
+|   |   |   |   |   a160 <= 0: 6 (15.0/6.0)
+|   |   |   |   |   a160 > 0: 2 (30.0/19.0)
+|   |   |   a129 > 0: 6 (206.0/78.0)
+|   a78 > 0
+|   |   a129 <= 0
+|   |   |   a193 <= 0
+|   |   |   |   a176 <= 0: 1 (8.0/2.0)
+|   |   |   |   a176 > 0
+|   |   |   |   |   a160 <= 0: 1 (2.0/1.0)
+|   |   |   |   |   a160 > 0: 2 (5.0/2.0)
+|   |   |   a193 > 0
+|   |   |   |   a144 <= 0: 8 (52.0/10.0)
+|   |   |   |   a144 > 0
+|   |   |   |   |   a145 <= 0: 0 (4.0)
+|   |   |   |   |   a145 > 0: 8 (8.0/3.0)
+|   |   a129 > 0: 0 (146.0/22.0)
+
+Number of Leaves  : 	34
+
+Size of the tree : 	67
+
+
+Time taken to build model: 0.05 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         737               46.2649 %
+Incorrectly Classified Instances       856               53.7351 %
+Kappa statistic                          0.4029
+Mean absolute error                      0.1308
+Root mean squared error                  0.2603
+Relative absolute error                 72.6768 %
+Root relative squared error             86.7556 %
+Total Number of Instances             1593     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.826     0.022      0.806     0.826     0.816      0.943    0
+                 0.154     0.033      0.347     0.154     0.214      0.753    1
+                 0.516     0.102      0.36      0.516     0.424      0.804    2
+                 0.61      0.19       0.262     0.61      0.367      0.798    3
+                 0.435     0.034      0.593     0.435     0.502      0.851    4
+                 0.182     0.05       0.287     0.182     0.223      0.803    5
+                 0.826     0.06       0.607     0.826     0.7        0.944    6
+                 0.158     0.028      0.385     0.158     0.224      0.786    7
+                 0.303     0.022      0.603     0.303     0.403      0.784    8
+                 0.608     0.056      0.542     0.608     0.573      0.881    9
+Weighted Avg.    0.463     0.06       0.479     0.463     0.445      0.835
+
+=== Confusion Matrix ===
+
+   a   b   c   d   e   f   g   h   i   j   <-- classified as
+ 133   0   0   1   3   1   8   0   8   7 |   a = 0
+   0  25  22  42   7  17   0  16   4  29 |   b = 1
+   3  10  82  26   2   5   9   0  15   7 |   c = 2
+   0   5  24  97   1  13   0   1   0  18 |   d = 3
+   3   2  17   3  70   6  38  13   2   7 |   e = 4
+   0   3  26  86   7  29   1   6   1   0 |   f = 5
+   1   0  14   0  10   2 133   1   0   0 |   g = 6
+   1  14   7  66  12  20   4  25   1   8 |   h = 7
+  20   7  33   6   6   2  26   3  47   5 |   i = 8
+   4   6   3  43   0   6   0   0   0  96 |   j = 9
+

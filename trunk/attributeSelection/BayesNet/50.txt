@@ -1,0 +1,164 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.BayesNet -D -Q weka.classifiers.bayes.net.search.local.K2 -- -P 1 -S BAYES -E weka.classifiers.bayes.net.estimate.SimpleEstimator -- -A 0.5
+Relation:     Semeion-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 199-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 149-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 99-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 49
+Instances:    1593
+Attributes:   50
+              a161
+              a177
+              a145
+              a160
+              a144
+              a78
+              a176
+              a193
+              a129
+              a62
+              a94
+              a111
+              a110
+              a81
+              a97
+              a128
+              a95
+              a46
+              a126
+              a127
+              a192
+              a8
+              a7
+              a61
+              a113
+              a228
+              a230
+              a162
+              a229
+              a65
+              a178
+              a77
+              a112
+              a76
+              a231
+              a92
+              a79
+              a82
+              a9
+              a194
+              a6
+              a142
+              a227
+              a66
+              a63
+              a91
+              a146
+              a75
+              a104
+              ans
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Bayes Network Classifier
+not using ADTree
+#attributes=50 #classindex=49
+Network structure (nodes followed by parents)
+a161(2): ans 
+a177(2): ans 
+a145(2): ans 
+a160(2): ans 
+a144(2): ans 
+a78(2): ans 
+a176(2): ans 
+a193(2): ans 
+a129(2): ans 
+a62(2): ans 
+a94(2): ans 
+a111(2): ans 
+a110(2): ans 
+a81(2): ans 
+a97(2): ans 
+a128(2): ans 
+a95(2): ans 
+a46(2): ans 
+a126(2): ans 
+a127(2): ans 
+a192(2): ans 
+a8(2): ans 
+a7(2): ans 
+a61(2): ans 
+a113(2): ans 
+a228(2): ans 
+a230(2): ans 
+a162(2): ans 
+a229(2): ans 
+a65(2): ans 
+a178(2): ans 
+a77(2): ans 
+a112(2): ans 
+a76(2): ans 
+a231(2): ans 
+a92(2): ans 
+a79(2): ans 
+a82(2): ans 
+a9(2): ans 
+a194(2): ans 
+a6(2): ans 
+a142(2): ans 
+a227(2): ans 
+a66(2): ans 
+a63(2): ans 
+a91(2): ans 
+a146(2): ans 
+a75(2): ans 
+a104(2): ans 
+ans(10): 
+LogScore Bayes: -38756.219117494446
+LogScore BDeu: -40020.95542202759
+LogScore MDL: -39784.32115322388
+LogScore ENTROPY: -37944.664262901315
+LogScore AIC: -38443.664262901315
+
+
+Time taken to build model: 0.05 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        1155               72.5047 %
+Incorrectly Classified Instances       438               27.4953 %
+Kappa statistic                          0.6945
+Mean absolute error                      0.0567
+Root mean squared error                  0.2153
+Relative absolute error                 31.4989 %
+Root relative squared error             71.77   %
+Total Number of Instances             1593     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.901     0.003      0.967     0.901     0.932      0.995    0
+                 0.667     0.036      0.675     0.667     0.671      0.953    1
+                 0.428     0.035      0.576     0.428     0.491      0.899    2
+                 0.616     0.051      0.573     0.616     0.594      0.94     3
+                 0.783     0.022      0.803     0.783     0.792      0.97     4
+                 0.78      0.033      0.725     0.78      0.752      0.969    5
+                 0.938     0.017      0.858     0.938     0.896      0.995    6
+                 0.576     0.04       0.611     0.576     0.593      0.92     7
+                 0.761     0.029      0.738     0.761     0.749      0.968    8
+                 0.797     0.038      0.696     0.797     0.743      0.959    9
+Weighted Avg.    0.725     0.03       0.723     0.725     0.722      0.957
+
+=== Confusion Matrix ===
+
+   a   b   c   d   e   f   g   h   i   j   <-- classified as
+ 145   0   1   0   7   0   0   0   5   3 |   a = 0
+   0 108   3   8   2   7   0  29   0   5 |   b = 1
+   0  11  68  23   4   8   9   5  27   4 |   c = 2
+   0   2   9  98   0  15   0  16   4  15 |   d = 3
+   1   8   3   0 126   6   8   2   1   6 |   e = 4
+   0   0   5  16   4 124   2   4   0   4 |   f = 5
+   1   0   5   0   3   0 151   0   1   0 |   g = 6
+   0  19   6  16  10   4   1  91   0  11 |   h = 7
+   1   4  17   2   1   0   5   0 118   7 |   i = 8
+   2   8   1   8   0   7   0   2   4 126 |   j = 9
+
