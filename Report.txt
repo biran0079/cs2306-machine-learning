@@ -89,3 +89,12 @@ Overfitting
 Overfitting is a common problem in practuce, especially when the dataset is noisy, and dataset is limited. When the classifier's performance increases on the training dataset, it's performance on unseen dataset may not always increase.
 As mentioned in the first section, deision tree can represent any function. It is easy to build a decision tree which can classify training dataset 100% correctly, but such decision tree may perform poorly on unseen dataset. 
 C4.5 use some pruning technique to overcome the overfitting problem. It split a dataset into three parts, each for training, validing and testing. It first use training dataset to build a decision tree, and do pruning when classification accuracy on validating dataset can be improved.
+
+
+Noise
+
+The decision tree algorithm assumes the dataset is accurate. 
+However in practice, dataset can have errors caused by errors in measurement, and human histakes. 
+According to Quinlan, errors in the training set may cause the attributes to become inadequate, or may lead to decision trees of spurious complexity.
+For example, it the attribute contains errors, then it amy cause two instances of different classes may have the same attributes.
+The more noise the dataset has, the more 'random' it appears, so the lower information gain can be expected from each node, which can cause the decision tree grow higher.
