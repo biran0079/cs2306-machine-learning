@@ -2,30 +2,27 @@ Recognize handwritten digit using Decision tree and Bayes Network
 
 Abstruct
 
-Handwritten digits recognition is an important application of machine learning. The objective is to recognize images of handwritten digits based on classification methods for multivariate data. This paper will apply decision tree and Bayes network algorithm on this task, and analyze the performance incluenced by different feature of the dataset.
+Handwritten digits recognition is an important application of machine learning. The objective is to recognize images of handwritten digits based on classification methods for multivariate data. This paper will apply C4.5 decision tree algorithm, and boosting algorithm on C4.5 on  Semeion Handwritten Digit Data Set, and analyze the performance.
 
 Introduction
 
-WEKA is be used for training and testing in this paper. Both decision tree(C4.5) and Bayes network algorithm(BayesNet) used in this paper are are provided by WEKA.
 The first section provide a description of the Semeion Handwritten Digit Data Set, which is used for training and testing in this paper. 
-The second section give a brief introduction of decision tree(C4.5) and bayes network algorithm used in this paper.
-The third section compare the performance of the two algorithms on the dataset.
-The forth section deals with overfitting by several techniques.
-The fifth section improves performance by providing exta information of the dataset.
+The second section give a brief introduction of decision tree(C4.5).
+The third section analize the performance of the C4.5 algorithm on the dataset.
+The forth section deals with overfitting by several techniques, with focuse on boosting algorithm.
 
+WEKA is be used for training and testing in this paper. Both decision tree(C4.5) and Bayes network algorithm(BayesNet) used in this paper are are provided by WEKA.
 
 DataSet
 
 Semeion Handwritten Digit Data Set is used in this paper. The dataset was created by Tactile Srl, Brescia, Italy (http://www.tattile.it) and donated in 1994 to Semeion Research Center of Sciences of Communication, Rome, Italy (http://www.semeion.it), for machine learning research. 
-1593 handwritten digits from around 80 persons were scanned, stretched in a rectangular box 16x16 in a gray scale of 256 values.Then each pixel of each image was scaled into a bolean (1/0) value using a fixed threshold.
+1593 handwritten digits from around 80 persons were scanned, stretched in a rectangular box 16x16 in a gray scale of 256 values.Then each pixel of each image was scaled into a bolean (1/0) value using a fixed threshold. This dataset contains no missing values.
 Each person wrote on a paper all the digits from 0 to 9, twice. The commitment was to write the digit the first time in the normal way (trying to write each digit accurately) and the second time in a fast way (with no accuracy). 
 
 This dataset consists of 1593 records (rows) and 256 attributes (columns).
 Each record represents a handwritten digit, orginally scanned with a resolution of 256 grays scale.
 Each pixel of the each original scanned image was first stretched, and after scaled between 0 and 1 (setting to 0 every pixel whose value was under tha value 127 of the grey scale (127 included) and setting to 1 each pixel whose orinal value in the grey scale was over 127).
 Finally, each binary image was scaled again into a 16x16 square box (the final 256 binary attributes). 
-
-1593 instances is provieded in the dataset, which is not many. To obtain better result of the classification on this dataset, 10-fold cross calidation is used when testing.
 
 To convert it into WEKA accetable form without lossing information of the dataset, I modified the "class label" part into a digit from 0 to 9, and.
 The dataset is given following certain order such that many instances with the same label are close to each other in the file. To avoid it's incluence, the order of instances are shuffled before being read by WEKA.
@@ -35,66 +32,95 @@ Algorithm
 Decision tree (C4.5)
 Decision tree is a popular machine learning algorithm. It represend a function in form of a tree, each node denote an attrribute, and each edge represent the condition which lead to the next node. Leaves contains labels, which are the result of classification. Decision tree efficient and simple. The tree can be pretty human readable, unlike some algotithms like artificial nueral network. Decision tree is very descriptive, and theoretically, decision tree can represent any function. There are many decision tree algorithms in machine learning, and the decision tree algorithm used in this paper is C4.5, an improved version of ID3 algorithm. C4.5 algorithm follows a simple inductive bias, which is "smaller trees are prefered", which means that smaller trees tend to perform bettwe than bigger trees on unseen dataset. This inductive bias is motivated by Occan Razor principle. C4.5 works well in many cases, and is one of the most popular decision tree algorithm. A free implementation of C4.5 algorithm in java is available in J48 package. J48 is also integrated in WEKA.
 
-Bayes Net
-
 
 Performance
 
-C4.5
+The data set contains 1593 instances, which is very small. So cross validation is used to perform testing. By applying cross validation on different fold number, we can see that the error rate doesnot change much after 4 fold, so the result of 4 fold cross validation is very likely to provide accurate estimation of the real error rate on the dataset. To be safe, we use 10 fold cross validation in this paper as default testing method.
 
-Time taken to build model: 0.33 seconds
-Correctly Classified Instances        1211               76.0201 %
-Incorrectly Classified Instances       382               23.9799 %
+Fold number	Error rate
+	2	 29.0019 %
+	4	 25.6121 %
+	6	 24.231  %
+	8	 24.6704 %
+	10	 23.9799 %
+	12	 24.8588 %
+	14	 24.5449 %
 
-Confusion Matrix
-   a   b   c   d   e   f   g   h   i   j   <-- classified as
- 149   1   2   0   4   0   0   0   2   3 |   a = 0
-   0 138   4   1   3   2   0   5   3   6 |   b = 1
-   0  10 107   6   8   1   3   7  13   4 |   c = 2
-   0   3   5 129   1   6   0   5   1   9 |   d = 3
-   5   9   9   0 113   6   6   7   2   4 |   e = 4
-   0   3   1   7   6 129   2   1   3   7 |   f = 5
-   1   4   3   1   3   2 141   0   6   0 |   g = 6
-   3  17   9   4   4   2   1 110   4   4 |   h = 7
-   5   4  32   9   2   1   5   4  85   8 |   i = 8
-   6   4   2  14  11   4   0   2   5 110 |   j = 9
+The above result is obtained by using default parameter setting in WEKA, the error rate of C4.5 algortihm is between 24% and 25%.
+However, if we apply C4.5 algorithm on the whole dataset, the error rate on the whole dataset is 5.7125 %. So there is overfitting.
+
+C4.5 use some pruning technique to deal with the overfitting problem. 
 
 
-Bayes Net
 
-Time taken to build model: 0.11 seconds
-Correctly Classified Instances        1356               85.1224 %
-Incorrectly Classified Instances       237               14.8776 %
+By looking at the images of digits in the dataset, several pixels on the right and buttom of images are black, while are definitely not part of the digit. So this dataset contains noise.
 
-Confusion Matrix
-   a   b   c   d   e   f   g   h   i   j   <-- classified as
- 153   0   1   0   2   0   0   0   5   0 |   a = 0
-   0 126   5   2   3   2   1  23   0   0 |   b = 1
-   0  12 134   0   4   0   2   0   5   2 |   c = 2
-   0   6   0 140   0   1   0   1   4   7 |   d = 3
-   0  16   1   0 127   1   3   8   0   5 |   e = 4
-   0   1   1   7   2 137   3   4   1   3 |   f = 5
-   2   5   1   0   5   3 142   0   3   0 |   g = 6
-   0   7   0   0   2   0   1 143   1   4 |   h = 7
-   0   8   1   9   0   0   0   1 128   8 |   i = 8
-   0   4   0  11   1   1   0   4  11 126 |   j = 9
+J48 package provide several adjustable parameters for C4.5 algorithm, one of them is confident factor.
+According to [Morgan.Kaufmann,.Data.Mining.Practical.Machine.Learning.Tools], confident factor is a probability threshold of the probability of the actual error rate is worse than the pessimistic estimation based on some reasonable assumption. The pessimistic estimation of the error rate for each subtree is used when do the subtree replacement and subtree raising pruning in C4.5 algorithm. So smaller confidence factor implise more pessimistic estimation, which will cause more drastic pruning. The default confident factor in WEKA is 0.25, which is a bit large for some noisy dataset.
 
 
-From the result, it turns out that Bayes Net has a better performace than C4.5.
-Bayes network takes less time to build the classifier, and performs better on unseen dataset.
+Confident factor	Error rate	Tree size
+0.30			23.9799 %	297
+0.25			23.9799 %	293
+0.20			23.8544 %	281
+0.15			23.9171 %	281
+0.10			24.231  %	277
+0.05			24.231  %	267
+0.01			24.4821 %	255
+0.001			24.3566 %	237
+1E-4			24.6077 %	213
+1E-5			26.3026 %	179
 
 
-Overfitting
-
-Overfitting is a common problem in practuce, especially when the dataset is noisy, and dataset is limited. When the classifier's performance increases on the training dataset, it's performance on unseen dataset may not always increase.
-As mentioned in the first section, deision tree can represent any function. It is easy to build a decision tree which can classify training dataset 100% correctly, but such decision tree may perform poorly on unseen dataset. 
-C4.5 use some pruning technique to overcome the overfitting problem. It split a dataset into three parts, each for training, validing and testing. It first use training dataset to build a decision tree, and do pruning when classification accuracy on validating dataset can be improved.
+We can see that although the size of the tree is reducing when confident factor decreases, the error rate doesn't decrease as expected. More over, it starts to increase when the size of tree decrease too some extent. 
+So adjusting confident factor may not work for this dataset.
 
 
-Noise
+Another parameter which can be adjusted is the minimun number of instances per leaf(which is 2 by default). Increase this number may reduce the size of the tree, which makes the classifier more robust to noise.
 
-The decision tree algorithm assumes the dataset is accurate. 
-However in practice, dataset can have errors caused by errors in measurement, and human histakes. 
-According to Quinlan, errors in the training set may cause the attributes to become inadequate, or may lead to decision trees of spurious complexity.
-For example, it the attribute contains errors, then it amy cause two instances of different classes may have the same attributes.
-The more noise the dataset has, the more 'random' it appears, so the lower information gain can be expected from each node, which can cause the decision tree grow higher.
+Num	Error rate	Tree size
+1	24.4193 %	437
+2	23.9799 %	293
+3	23.9799 %	229
+4	24.6077 %	193
+5	25.1099 %	171
+6	25.8632 %	151
+
+The result shows that the size of the tree decreases rapidly when the minimun number of instances increases. However, the error rate still doesn't change much when the tree size decreases. Considering the small size of dataset, each leaf would have about 10-20 instances on average, which is very small already. So set a large value for this parameter may not be a good idea.
+
+Noticing that the digit only appears in the center of each image, so some pixels on the corner and edges are vary likely to be white, thus those attributes are very unlikely to provide any useful information for classification. Moreover, those attributes may bring in noise. Thus, selecting attributes of the dataset may help eliminate some noise of the dataset.
+
+The C4.5 algorithm is build by selecting attributes with high information gain first. So we can try to select attributes based on information gain of each attribute.
+
+Num of attribute	Error rate	Tree size
+256			23.9799 %	293
+200			22.1594 %	285
+150			22.4105 %	301
+100			25.9887 %	323
+50			33.7728 %	327
+
+The result shows that as the number of attributes decreases, the error rate first decrease slightly, and after that start to increase.
+The size of the tree does not always decreases when the number of attribute decreases because only "useless attributes" which are not likely to appear in the original decision tree are discarded.
+
+Since C4.5 algorithm itself is based on attribute selection by information gain, the error rate does not decreases much.
+
+
+
+Boosting is an algorithm which can boost week classifier into a stronger classifier. The boosting alglrithm provided by WEKA is AdaBoosting M1, which is generalization of AdaBoosting algorithm on multiple class classification probelm. It requires over 50% accuracy of "week classifier" on the dataset in order to "boost" it into a stronger classifier.
+The boosting algorithm constructs the classifier by several iteratrions, each iteration obtains a classifier by weighted dataset, and the output of the final classifier is obtained by weighted sum of classifiers builded in all iterations. Misclassified instances has a larger weight so that thoses instances will be paid more attention on in the next iteratiion. The weight of each classifier is decided by their accuracy. Boosting works well with decision tree in practice, and it often does not suffer from overfitting.
+
+
+We apply boosting on C4.5 algorithm with different number of iterations.
+
+Num of Iterations	Error rate
+	2		24.3566 %
+	4		17.1375 %
+	8		12.6177 %
+	16		 8.7884 %
+	32		 7.5957 %
+	64		 7.2819 %
+
+The error rate drops dramatically as the iteration number increases, and keep to about 7%, and it does not appear to overfitting as the number of iteration increases.
+Boosting algorithm constructs a classifier by combining several classifiers, which increase the complxity of the classifier. However, according to Occan Razor principle, easier classifiers tend to generalize better on unseen dataset. Boosting algorithm seems a cotradict with Occan Razor.
+One possible explaination is that the complexity of classifier is not only measured by the number of classifiers. 
+In Boosting algorithm, each classifier vote to a class by its weight, and the class with the highest weight is the result of classification. The "margin" of an example is defined by the difference between weight of correct class, and the weight of maximun weight of incorrect class. The larger the margin is , the more confident the classification for this instance is. The boosting algorithm tend to maximize margin of instances, and convergence with some large margin distribution. Sometimes we can observe that when running boosting algorithm, the testing error keeps on decreases even after the error rate of training set is 0. This is because when the error rate of testing data is zero, the margin distribution may not have converged yet, and as margin increases, the error rate on testing dataset decreases[Schapire,Freund,Bartlett,Lee].
