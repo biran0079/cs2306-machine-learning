@@ -2,7 +2,7 @@ Recognize handwritten digit using Decision tree and Bayes Network
 
 Abstruct
 
-Handwritten digits recognition is an important application of machine learning. The objective is to recognize images of handwritten digits based on classification methods for multivariate data. This paper will apply C4.5 decision tree algorithm, boosting algorithm on C4.5, support vector machine(SVM) algorithm in this paper. Semeion Handwritten Digit Data Set is used for testing.
+Handwritten digits recognition is classic problem of machine learning. The objective is to recognize images of single handwritten digits. In this paper, we apply C4.5 decision tree algorithm, boosting algorithm on C4.5, support vector machine(SVM) algorithm on this problem. The later part of the paper gives a way to improvement the classification accuracy by adding a few extra attributes into data set, which can provide significant improvement for all three algorithms we used.
 
 Introduction
 
