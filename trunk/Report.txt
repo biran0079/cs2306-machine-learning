@@ -2,16 +2,12 @@ Recognize handwritten digit using Decision tree and Bayes Network
 
 Abstruct
 
-Handwritten digits recognition is an important application of machine learning. The objective is to recognize images of handwritten digits based on classification methods for multivariate data. This paper will apply C4.5 decision tree algorithm, and boosting algorithm on C4.5 on  Semeion Handwritten Digit Data Set, and analyze the performance.
+Handwritten digits recognition is an important application of machine learning. The objective is to recognize images of handwritten digits based on classification methods for multivariate data. This paper will apply C4.5 decision tree algorithm, boosting algorithm on C4.5, support vector machine(SVM) algorithm in this paper. Semeion Handwritten Digit Data Set is used for testing.
 
 Introduction
 
-The first section provide a description of the Semeion Handwritten Digit Data Set, which is used for training and testing in this paper. 
-The second section give a brief introduction of decision tree(C4.5).
-The third section analize the performance of the C4.5 algorithm on the dataset.
-The forth section deals with overfitting by several techniques, with focuse on boosting algorithm.
 
-WEKA is be used for training and testing in this paper. Both decision tree(C4.5) and Bayes network algorithm(BayesNet) used in this paper are are provided by WEKA.
+WEKA is be used for training and testing in this paper. Algorithms used for training and testing are provided by WEKA, or some open source packages.
 
 DataSet
 
@@ -48,12 +44,10 @@ Fold number	Error rate
 
 The above result is obtained by using default parameter setting in WEKA, the error rate of C4.5 algortihm is between 24% and 25%.
 However, if we apply C4.5 algorithm on the whole dataset, the error rate on the whole dataset is 5.7125 %. So there is overfitting.
+This result is very poor compared to many other popular algorithms like support vector machine(will see it later in the paper). This is because the limitation of decision tree itself. Although a decision tree with no size limit can be proved to form any function. However, C4.5 algorithm's inductive bias shows that smaller trees are preferable, which potentially reduce the number candidate hypothesise, so the result decision tree may not have a very high accuracy.
 
+It is easy to overfit the training dataset for decision trees.
 C4.5 use some pruning technique to deal with the overfitting problem. 
-
-
-
-By looking at the images of digits in the dataset, several pixels on the right and buttom of images are black, while are definitely not part of the digit. So this dataset contains noise.
 
 J48 package provide several adjustable parameters for C4.5 algorithm, one of them is confident factor.
 According to [Morgan.Kaufmann,.Data.Mining.Practical.Machine.Learning.Tools], confident factor is a probability threshold of the probability of the actual error rate is worse than the pessimistic estimation based on some reasonable assumption. The pessimistic estimation of the error rate for each subtree is used when do the subtree replacement and subtree raising pruning in C4.5 algorithm. So smaller confidence factor implise more pessimistic estimation, which will cause more drastic pruning. The default confident factor in WEKA is 0.25, which is a bit large for some noisy dataset.
@@ -102,7 +96,7 @@ Num of attribute	Error rate	Tree size
 The result shows that as the number of attributes decreases, the error rate first decrease slightly, and after that start to increase.
 The size of the tree does not always decreases when the number of attribute decreases because only "useless attributes" which are not likely to appear in the original decision tree are discarded.
 
-Since C4.5 algorithm itself is based on attribute selection by information gain, the error rate does not decreases much.
+Since C4.5 algorithm itself is based on attribute selection by information gain, when constructing the decision tree, attributes are selected based on their infomation gain. So selecting attribute again does not help much, it not make things worse.
 
 
 
@@ -120,7 +114,55 @@ Num of Iterations	Error rate
 	32		 7.5957 %
 	64		 7.2819 %
 
-The error rate drops dramatically as the iteration number increases, and keep to about 7%, and it does not appear to overfitting as the number of iteration increases.
+We can see that although C4.5 itself performs poorly on this dataset(error rate greater than 20%), the boosted C4.5 can performs very well.
+The error rate drops dramatically as the iteration number increases, and keep to about 7%.It does not appear to overfitting as the number of iteration increases.
+
 Boosting algorithm constructs a classifier by combining several classifiers, which increase the complxity of the classifier. However, according to Occan Razor principle, easier classifiers tend to generalize better on unseen dataset. Boosting algorithm seems a cotradict with Occan Razor.
-One possible explaination is that the complexity of classifier is not only measured by the number of classifiers. 
+One possible explaination is that the complexity of classifier is not measured by the number of classifiers, but by the "margin" of the classifier. 
 In Boosting algorithm, each classifier vote to a class by its weight, and the class with the highest weight is the result of classification. The "margin" of an example is defined by the difference between weight of correct class, and the weight of the sum of all weights of incorrect class. The larger the margin is , the more confident the classification for this instance is. The boosting algorithm tend to maximize margin of instances, and convergence with some large margin distribution. Sometimes we can observe that when running boosting algorithm, the testing error keeps on decreases even after the error rate of training set is 0. This is because when the error rate of testing data is zero, the margin distribution may not have converged yet, and as margin increases, the error rate on testing dataset decreases[Schapire,Freund,Bartlett,Lee].
+
+
+Support vector machine
+
+Introduction
+
+Support vector machine can be seen as a generalized version of linear classifiere. To classify dataset which are not linear seperatable, SVM project each example into a higher dimensional feature space, and find a hyper plane, which seperate the dataset. The margin of hyper plane is defined as the distance of the plane to the closest example. Hyper plaine with large margin is prefered in SVM. All calculation of feature vector with high dimension can be done by kernel function, which reduce the computation time dramatically. Different kernel function can be used for different feature space. In this paper, we only use polynomial kernels.
+
+WEKA's libsvm package implemented by Chih-Chung Chang and Chih-Jen Lin is used for testing.
+
+Testing
+
+
+Kernel			Error rate
+polynomial degree 1	7.0935 %
+polynomial degree 2	4.2687 %
+polynomial degree 3	4.6453 %
+polynomial degree 4	6.1519 %
+polynomial degree 5	8.349  %
+
+kernel function forms:
+polynomial kernel: 	(u*v)^degree
+
+The result shows that SVM gives very good result. We can observe that the error rate first increases, and then decreases as the degree of the polynomial kernel increases. This is because the hyper plain tends to be more flexible to fit the training set when the degree is larger, which can result in overfitting, especially when the dataset is limited.
+
+
+Blur the image
+
+One observasion from the dataset is that each pixel is represented by 0 or 1. However in reality, the one pixel can have many gray degrees. Another observasion is that for decision tree and SVM, the order of attributes is not important for training and classification. In other word, if I apply some fixed permutation on the attributes of each example in the dataset, then decision tree and SVM will generate exactly the same model as the model generated by original dataset.
+However, the order of pixel is important in the process of human being recognizing a hand written digit. If the rearrange the pixel of an image randomly, a human is very unlikely to recognize what's in the image.
+If we can add the possition information into the dataset, then it may increase the classification accuracy.
+
+Combine the above two observasion, we can have a surprising processing scheme: make the image blur.
+We replace each pixel by an integer which is the number of 1s in the surrounding pixels.
+This can bring in some possition information for each pixel, and also add "gray degree" into the dataset.
+The image after this transformation turns to be blurer compared to the original image.
+
+
+Testing
+
+Algorithm			Original Error Rate	Error Rate On Blur Digit
+C4.5				23.9799 %		39.9247 %
+Boosted C4.5(16 iterations)	8.7884 %		18.7696 %
+SVM(polynomial d-2 kernel)	4.2687 %		 4.2059 %
+SVM(polynomial d-3 kernel)	4.6453 %		 4.3942 %
+SVM(polynomial d-4 kernel)	6.1519 %		 4.7081 %
