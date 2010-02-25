@@ -4,6 +4,7 @@
 \usepackage{latexsym}
 \usepackage{amsmath}
 \usepackage{url}
+\usepackage{graphicx}
 \usepackage{amsthm}
 \parindent=0in
 \author{Bi Ran(U087272L)}
@@ -81,30 +82,25 @@ Boosting algorithm constructs a classifier by combining several classifiers, whi
 One possible explanation is that the complexity of classifier is not measured by the number of classifiers, but by the "margin" of the classifier.
 In Boosting algorithm, each classifier vote to a class by its weight, and the class with the highest weight is the result of classification. The "margin" of an example is defined by the difference between weight of correct class, and the weight of the sum of all weights of incorrect class. The larger the margin is , the more confident the classification for this instance is. The boosting algorithm tend to maximize margin of instances, and convergence with some large margin distribution. Sometimes we can observe that when running boosting algorithm, the testing error keeps on decreases even after the error rate of training set is 0. This is because when the error rate of testing data is zero, the margin distribution may not have converged yet, and as margin increases, the error rate on testing data set decreases.
 \subsection{Support Vector Machine}
-Support vector machine can be seen as a generalized version of linear classifier. To classify data set which are not linear separatable, SVM project each example into a higher dimensional feature space, and find a hyper plane, which separate different classes. The margin of hyper plane is defined as the distance of the plane to the closest example. Hyper plane with large margin is preferred in SVM. All calculation of feature vector with high dimension can be done by kernel function, which reduce the computation time dramatically. Different kernel function can be used for different feature space. In this paper, we only use polynomial kernels($(\vec{u}*\vec{v})^{degree}$).
-
-One SVM can classify two classes. For multi class classification, two approaches are commonly used: one versus rest and pair-wise approach. For handwritten digit recognition problem, one versus rest approach construct 10 SVMs, one for each digit $i$, which classify ``the input digit is $i$ or not''.  The output of SVM is real number, so the digit with the highest output is classified as the class of the input. Pair-wise approach construct 45 SVMs, one for each pair of digits $i$ and $j$, which determines the input digit is $i$ or $j$. Each SVM vote for one digit, and the digit with the highest vote is the result. One problem for one versus rest is that the class of training set is not balance, which may reduce the accuracy. Usually, pair-wise method has a better performance. In this paper, pair-wise approach is used.\\
+Support vector machine can be seen as a generalized version of linear classifier. To classify data set which are not linear separatable, SVM project each example into a higher dimensional feature space, and find a hyper plane, which separate different classes. The margin of hyper plane is defined as the distance of the plane to the closest example. Hyper plane with large margin is preferred in SVM. All calculation of feature vector with high dimension can be done by kernel function, which reduce the computation time dramatically. Different kernel function can be used for different feature space. Although new kernels are being purposed by researchers, four basic kernels are post popular:(ref: A Practical Guide to Support Vector Classification)
+\begin{itemize}
+\item linear: $K(x_i,x_j)=x_i^Tx_j$\\
+\item polynomial: $K(x_i,x_j)=(\gamma x_i^Tx_j+r)^d$, $\gamma >0$\\
+\item radial basis function (RBF): $K(x_i,x_j)=\exp(-\gamma + \|x_i-x_j\|^2)$, $\gamma > 0$\\
+\item sigmoid: $K(x_i,x_j)=tanh(\gamma x_i^Tx_j+r)$\\
+\end{itemize}
+According to Keerthi and Lin (2003) and (Lin and Lin, 2003), linear kernel is a special case of RBF kernel, and sigmoid kernel behaves like RBF kernel with certain parameters. So in this paper, we only use RBF kernels.\\
 There are many kinds of SVMs based on different error function it aims to minimize. In this paper, we simply use C-svm, which minimize function:
  subject to:$$\frac{1}{2}\|\vec{\beta}\|^2+C\sum_{i=1}^n \xi_i$$
  subject to:$$y_i(\vec{\beta}.\vec{x_i}+\beta{0})\geq 1-\xi_i$$$$\forall i, \xi_i\geq 0$$
-\emph{libsvm} package(\url{http://www.csie.ntu.edu.tw/~cjlin/libsvm/}) implemented by Chih-Chung Chang and Chih-Jen Lin is used for training and testing purpose in this paper.
+\emph{libsvm} package(\url{http://www.csie.ntu.edu.tw/~cjlin/libsvm/}) implemented by Chih-Chung Chang and Chih-Jen Lin is used for training and testing purpose in this paper.\\
 
-\vspace{0.5cm}
-\begin{tabular}{c c}
-Kernel		&	Error rate\\
-\hline \hline
-polynomial degree 1	&7.0935 \%\\
-polynomial degree 2	&4.2687 \%\\
-polynomial degree 3	&4.6453 \%\\
-polynomial degree 4	&6.1519 \%\\
-polynomial degree 5	&8.349  \%\\
-\end{tabular}
-\vspace{0.5cm}\\
-The result shows that SVM gives very good result. We can observe that the error rate first increases, and then decreases as the degree of the polynomial kernel increases. This is because the hyper plain tends to be more flexible to fit the training set when the degree is larger, which can result in over fitting, especially when the data set is limited.
+For C-SVM using RBF kernel, parameters $C$ and $\gamma$ are adjustable. We follow the way proposed in (guide.pdf) to perform feature scaling parameter search to achieve a good performance. We use tools provided in \emph{libsvm} package to perform the model selection automatically.\\
+As shown in Figure 1, the SVM tends to perform best when $C=2.0$ and $\gamma=0.0078125$, and the error rate is 4.2059\%.
 
 \section{Improvement}
 \subsection{Motivation}
-One observation is that for decision tree and SVM, the order of attributes is not important for training and classification. In other word, if I apply some fixed permutation on the attributes of each example in the dataset, then decision tree and SVM will generate almost the same model as the model generated by original data set.
+One observation is that for decision tree and SVM, the order of attributes is not important for training and classification. In other word, if I apply some fixed permutation on the attributes of each example in the data set, then decision tree and SVM will generate almost the same model as the model generated by original data set.
 However, the order of pixel is important in the process of human being recognizing a hand written digit. If the rearrange the pixel of an image randomly, a human is very unlikely to recognize what's in the image.
 Moreover, some properties of the data set are harder to learn for certain classifiers(e.g. decision tree are not good at representing XOR function).
 This motivate the preprocessing of data. More specifically, we try to add some attributes which provide those information which are hard to learn by machine learning algorithms.
@@ -121,15 +117,12 @@ Algorithm		&	Original Error Rate	Error &Rate On Blur Digit\\
 \hline \hline
 C4.5		&		23.9799 \%		&18.6441 \%\\
 Boosted C4.5(8 iterations)	&12.6177 \%		& 7.8468 \%\\
-Boosted C4.5(16 iterations)	&8.7884 \%		 6.5286 \%\\
-SVM(polynomial d-1 kernel)	&7.0935 \%		 4.2687 \%\\
-SVM(polynomial d-2 kernel)	&4.2687 \%		 3.7037 \%\\
-SVM(polynomial d-3 kernel)	&4.6453 \%		 3.892  \%\\
-SVM(polynomial d-4 kernel)	&6.1519 \%		 5.022  \%\\
+Boosted C4.5(16 iterations)	&8.7884 \%		& 6.5286 \%\\
+SVM(RBF kernel $C=2.0$ $\gamma=0.0078125$)	& 3.2643 \%\\
 \end{tabular}
 \vspace{0.5cm}\\
 From the result, we can see improvements on all algorithms are significant. 34 attributes is a small number compared to original 256 attributes, so the increase in time cost is trivial. So adding extra information tend to help improve accuracy for these algorithms.
 \section{Conclusion}
-By applying several machine learning algorithms on Semeion Handwritten Digit Data Set, we can observe that C4.5 algorithm performs poorly, while boosted C4.5 has a much better performance. SVM performs very well with linear kernel, and even better with polynomial kernel of degree 2 and 3. By adding extra information into the data set, the error rate for all these algorithm drops significantly, and SVM with polynomial d-2 kernel has the lowest error rate.
+By applying several machine learning algorithms on Semeion Handwritten Digit Data Set, we can observe that C4.5 algorithm performs poorly, while boosted C4.5 has a much better performance. C-SVM with RBF kernel performs very well on this data set. By adding extra information into the data set, the error rate for all these algorithm drops significantly, and SVM with polynomial d-2 kernel achieves error rate of 3.2643\%.
 \section{References}
 \end{document}
