@@ -128,6 +128,11 @@ Introduction
 
 Support vector machine can be seen as a generalized version of linear classifiere. To classify dataset which are not linear seperatable, SVM project each example into a higher dimensional feature space, and find a hyper plane, which seperate the dataset. The margin of hyper plane is defined as the distance of the plane to the closest example. Hyper plaine with large margin is prefered in SVM. All calculation of feature vector with high dimension can be done by kernel function, which reduce the computation time dramatically. Different kernel function can be used for different feature space. In this paper, we only use polynomial kernels.
 
+There are many kinds of SVMs based on different error function it aims to minimize. In this paper, we simply use C-svm, which minimize function:
+ subject to:
+
+
+
 WEKA's libsvm package implemented by Chih-Chung Chang and Chih-Jen Lin is used for testing.
 
 Testing
@@ -180,6 +185,7 @@ From the result, we can see improvements on all algorithms are significant. 34 a
 Conclusion
 
 By applying several machine learning algorithms on Semeion Handwritten Digit Data Set, we can observe that C4.5 algorithm performs poorly, while boosted C4.5 has a much better performance. SVM performs very well with linear kernel, and even better with polymonial kernel of degree 2 and 3. By adding extra information into the dataset, the error rate for all these algorithm drops significantly, and SVM with polinomial d-2 kernel has the lowest error rate.
+
 
 
 References
