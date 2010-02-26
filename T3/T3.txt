@@ -1,2 +1,0 @@
-The BayesNet algorithm is based on strong assumption, which does not holds in most datasets, so the accuracy is usually not very high.
-
