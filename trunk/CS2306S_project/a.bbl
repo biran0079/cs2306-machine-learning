@@ -1,0 +1,22 @@
+\begin{thebibliography}{1}
+
+\bibitem{Kussul_improvedmethod}
+E.~Kussul and T.~Baidyk.
+
+\bibitem{Morgan.Kaufmann}
+Morgan.Kaufmann,
+\newblock Data mining practical machine learning tools, 2005.
+
+\bibitem{DT_NPC}
+R.~R. Laurent~Hyafil,
+\newblock Information Processing Letters  (1976).
+
+\bibitem{boosting}
+P.~B. W. S.~L. Robert E.~Schapire, Yoav~Freund,
+\newblock The Annals of Statistics  (1998).
+
+\bibitem{SVM}
+C.-C.~C. Chih-Wei~Hsu and C.-J. Lin,
+\newblock (2009).
+
+\end{thebibliography}
