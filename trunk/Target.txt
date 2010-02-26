@@ -1,6 +1,0 @@
-1. Compare the performance of several simple machine learning algorithms on the hand written digit classification task. 
-Current algorithm: BayesNet, C4.5(J48).
-
-2. Test the performance of the clasifier trained by one data set, and test on the other dataset. The format of two datasets are different, more than one way can be considered in converting the format of one dataset into the other.
-
-3. Modify each dataset and test the effect on performance.
