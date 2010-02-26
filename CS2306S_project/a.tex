@@ -26,8 +26,18 @@ Handwritten digit recognition has important usage such as recognizing zip code, 
 \section{Data set}
 Semeion Handwritten Digit Data Set(\url{http://archive.ics.uci.edu/ml/datasets/Semeion+Handwritten+Digit}) is used in this paper. The data set was created by Tactile Srl, Brescia, Italy (\url{http://www.tattile.it}) and donated in 1994 to Semeion Research Center of Sciences of Communication, Rome, Italy (\url{http://www.semeion.it}), for machine learning research.
 1593 handwritten digits from around 80 persons were scanned, stretched in a rectangular box 16x16 in a gray scale of 256 values.Then each pixel of each image was scaled into a boolean (1/0) value using a fixed threshold. This data set contains no missing values.
-Each person wrote on a paper all the digits from 0 to 9, twice. The commitment was to write the digit the first time in the normal way (trying to write each digit accurately) and the second time in a fast way (with no accuracy).
+Each person wrote on a paper all the digits from 0 to 9, twice. The commitment was to write the digit the first time in the normal way (Figure 1) and the second time in a fast way (Figure 2).
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{clear}
+\caption{written in normal way}
+\end{figure}
 
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{unclear}
+\caption{written in fast way}
+\end{figure}
 This data set consists of 1593 records (rows) and 256 attributes (columns).
 Each record represents a handwritten digit, originally scanned with a resolution of 256 grays scale.
 Each pixel of the each original scanned image was first stretched, and after scaled between 0 and 1 (setting to 0 every pixel whose value was under the value 127 of the grey scale (127 included) and setting to 1 each pixel whose original value in the grey scale was over 127).
@@ -106,7 +116,7 @@ There are many kinds of SVMs based on different error function it aims to minimi
  subject to:$$y_i(\vec{\beta}.\vec{x_i}+\beta{0})\geq 1-\xi_i$$$$\forall i, \xi_i\geq 0$$
 
 For C-SVM using RBF kernel, $C$ and $\gamma$ are adjustable parameters. To find the optimal parameter, we can use grid-search proposed in \cite{SVM}: construct exponential growth sequence of $C$ and $\gamma$, and use a coarse grid search to find a ``better'' region, and apply grid search on that region to find more accurate parameters. Tools provided in \emph{libsvm} package are used to perform the model selection automatically.\\
-As shown in Figure 1, the SVM tends to perform best when $C=2.0$ and $\gamma=0.0078125$, and the error rate is 4.2059\%.
+As shown in Figure 3, the SVM tends to perform best when $C=2.0$ and $\gamma=0.0078125$, and the error rate is 4.2059\%.
 
 \begin{figure}
 \centering
@@ -136,9 +146,10 @@ SVM($C=2, \gamma=0.0078125$)	&4.2059\%       & 3.2643\%\\
 \end{tabular}
 \vspace{0.5cm}\\
 In the testing, From the result, we can see improvements on all algorithms are significant. All algorithm's error rate on modified data drop down to the $\frac{3}{4}$ of the original data.\\
- 34 attributes is a small number compared to original 256 attributes, so the increase in time cost is trivial. So adding extra information tend to help improve accuracy for these algorithms.
+Although decision tree and SVM use completely different way to look for target hypothesis, attributes which contains position information of pixels helps both of them improve accuracy. It can be expected that adding more features derived by position information of pixels could further improve the accuracy, and the improvement may be observed on other algorithms. This technique can be expected to work on general image classification problem whose data set only contains information about pixels color of images.
+
 \section{Conclusion}
-By applying several machine learning algorithms on Semeion Handwritten Digit Data Set, we can observe that C4.5 algorithm performs poorly, while boosted C4.5 has a much better performance. C-SVM with RBF kernel performs very well on this data set. By adding extra information into the data set, the error rate for all these algorithm drops significantly, and SVM with polynomial d-2 kernel achieves error rate of 3.2643\%.
+By applying several machine learning algorithms on Semeion Handwritten Digit Data Set, we can observe that C4.5 algorithm performs poorly even after choosing appropriate parameters, while boosted C4.5 has a much better performance. C-SVM with RBF kernel managed to reach 4.2059\% error rate after parameter search. By adding extra information into the data set, the error rate for all these algorithm drops down to about $3/4$ of their original error rate.
 
 \bibliographystyle{h-physrev3}
 \bibliography{ref}
