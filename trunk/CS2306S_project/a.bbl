@@ -19,4 +19,19 @@ P.~B. W. S.~L. Robert E.~Schapire, Yoav~Freund,
 C.-C.~C. Chih-Wei~Hsu and C.-J. Lin,
 \newblock (2009).
 
+\bibitem{SSK}
+S.~S. Keerthi and C.-J. Lin,
+\newblock Neural Computation  (2003).
+
+\bibitem{LL}
+H.-T. Lin and C.-J. Lin,
+\newblock Technical report, Department of Computer Science, National Taiwan
+  University  (2003),
+\newblock http://www.csie.ntu.edu.tw/~cjlin/papers/tanh.pdf.
+
+\bibitem{LIBSVM}
+C.-C. Chang and C.-J. Lin,
+\newblock {\em {LIBSVM}: a library for support vector machines}, 2001,
+\newblock Software available at \url{http://www.csie.ntu.edu.tw/~cjlin/libsvm}.
+
 \end{thebibliography}

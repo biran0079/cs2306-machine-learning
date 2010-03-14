@@ -14,13 +14,12 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-Handwritten digits recognition is a classic problem of machine learning. The objective is to recognize images of single handwritten digits(0-9). This paper will apply C4.5 decision tree, boosted C4.5, and support vector machine(SVM) on this problem, compare their performance, and finally propose a method to improvement the classification accuracy by adding attributes into data set.
+Handwritten digits recognition is a classic problem of machine learning. The objective is to recognize images of single handwritten digits(0-9). This paper will apply C4.5 decision tree, pairwise C4.5, boosted C4.5, and support vector machine(SVM) on this problem, compare their performance, and finally propose a method to improvement the classification accuracy by adding attributes into data set.
 \end{abstract}
 \section{Introduction}
 Handwritten digit recognition recognition is a classification problem. The performance of classification algorithm heavily depends on properties of data set.
-In this paper, Semeion Handwritten Digit Data Set is used for training and testing. The first part of the paper will show the result of C4.5, boosted C4.5 and SVM algorithms.
-It will be shown that the performance of decision tree is poor by itself, but much better after being boosted; SVM gives the best performance in these algorithms. Parameter search is applied to achieve relatively good performance for C4.5 and SVM.
-The second part will introduce a method to improve accuracy of classifiers by adding extra features into data set. It will be shown that performances of all three algorithms have significant improvement on the modified data set, and SVM with RBF kernel achieves error rate of 3.7037\%.
+In this paper, Semeion Handwritten Digit Data Set is used for training and testing. The first part of the paper will show the testing result of C4.5, boosted C4.5 and SVM algorithms. We also introduce a optimized version of C4.5 algorithm: pairwise C4.5, which outperforms C4.5 on this data set. Parameter search is applied to achieve relatively good performance for C4.5 and SVM.
+The second part will introduce a method to improve accuracy of classifiers by adding extra features into data set. It will be shown that performances of all three algorithms have significant improvement on the modified data set, and SVM with RBF kernel achieves error rate of 3.2643\%.
 \section{Background and Motivation}
 Handwritten digit recognition has important usage such as recognizing zip code, online recognition on computer tablets. Algorithms like support vector machine and multi layer perceptron are commonly used on this problem, and impressive result has been achieved. Lenet and its boosted version managed to get error rate less than 1\% on MNIST data set\cite{Kussul_improvedmethod}. SVM also gives one of the lowest error rate among many classification algorithms.
 \section{Data set}
@@ -86,10 +85,11 @@ This result is very poor compared to many other popular algorithms like support 
 \item[2] Although decision tree can estimate any discrete functions, it is difficult to learn certain functions like OXR, because the minimal decision tree for XOR requires a full binary tree with each leaf for one instance, and it is hard to find ``small'' trees to estimate XOR well.
 \item[3] C4.5 decision tree supports multi-class classification problem. More classes would result in larger trees. For example, if there are $N$ classes, and each attribute is binary. Since each leaf can only represent one class, the height of the tree must be larger than $log_2(N)$. Larger tree would contradict to Occan's Razor principle. Thus, C4.5 may not perform well in multi-class classification problems.
 \end{enumerate}
+\subsection{Pairwise C4.5}
 We can overcome the 3rd effect mentioned above by converting multi-class classification problem into two-class classification problem.\\
 Several possible methods can be used for this conversion. We only consider ``pairwise'' method in this paper. Pairwise method train $C_N^2$ classifiers for each pair of classes($N$ is the number of classes). When classifying a new instance, each classifier classifies the new instance, and vote for the class based on their results. The class with the highest vote is considered as the classification result. If draw happens, randomly choose one of the classes with the highest vote.\\
 Weka itself does not support this conversion, so I wrote a separate program based on WEKA's library to do this test.
-Source code is available at \url{http://code.google.com/p/cs2306-machine-learning/source/browse/trunk/J48Test.java}\\
+Source code is available at \url{http://code.google.com/p/cs2306-machine-learning/source/browse/#svn/trunk/src}\\
 \vspace{0.5cm}
 \begin{tabular}{c c}
 Algorithm	& Error rate\\
@@ -104,6 +104,7 @@ Boosting is an algorithm which aims to boost week classifier into a strong class
 generalization of AdaBoosting algorithm on multiple class classification problem.\\
 The boosting algorithm constructs the classifier by several iterations, each iteration obtains a classifier by a weighted data set, and the output of the final classifier is obtained by weighted sum of the results of all classifiers. After each iteration, data set is reweighted, and misclassified instances has a larger weight so that they are paid more attention on in the next iteration. The weight of each classifier is decided by their accuracy. Boosting works well with decision tree in practice, and it often does not suffer from over fitting problem.\\
 Following result is obtained by applying boosting on C4.5 algorithm($C=1$ and $minObj=2$) with different number of iterations.\\
+Source code is available at \url{http://code.google.com/p/cs2306-machine-learning/source/browse/#svn/trunk/src}\\
 \vspace{0.5cm}
 \begin{tabular}{c c}
 Number of Iterations	& Error rate\\
@@ -119,22 +120,37 @@ Number of Iterations	& Error rate\\
 From the table, we can see that the error rate drops rapidly when the number of iteration grows. Although higher accuracy can be achieved by further increase the number of iterations, the error rate would stop decreasing or start to increase(over fitting) at last.\\
 Boosting algorithm constructs a classifier by combining several classifiers, which intuitively increase the complexity of the classifier. However, according to Occan's Razor principle, simpler classifiers tend to generalize better on unseen data. Boosting algorithm seems a contradict with Occan's Razor principle.\\
 One possible explanation is that the complexity of classifier is not measured by the number of classifiers, but by the ``margin'' of the classifier.
-In Boosting algorithm, each classifier vote to a class by its weight, and the class with the highest weight is the result of classification. The margin of an example is defined by the difference between weight of correct class, and the sum of all weights of incorrect class. The larger the margin is , the more confident the classification for this instance is. The boosting algorithm tend to maximize margin of instances, and convergence with some large margin distribution\cite{boosting}.
+In Boosting algorithm, each classifier vote to a class by its weight, and the class with the highest weight is the result of classification. The margin of an example is defined by the difference between weight of correct class, and the sum of all weights of incorrect class. The larger the margin is , the more confident the classification for this instance is. The boosting algorithm tend to maximize margin of instances, and convergence with some large margin distribution\cite{boosting}.\\
+\subsection{Boosted Pairwise C4.5}
+We can also apply boosting on Pairwise C4.5. The result is shown in the table below
+\vspace{0.5cm}
+\begin{tabular}{c c c}
+Number of Iterations	& Boosted C4.5 & Boosted Pairwise C4.5\\
+\hline \hline
+	2		& 23.7916\% & 15.283\%  \\
+	4		& 17.7024\% & 12.075\%  \\
+	8		& 13.4965\% & 9.3710\%  \\
+	16		& 9.6673\%  & 8.0503\%  \\
+    32      & 7.7841\%  & 6.8553\%\\
+\end{tabular}
+\vspace{0.5cm}\\
+The result shows that boosted Pairwise C4.5 algorithm over performs boosted C4.5 algorithm, which is not surprising.\\
+
 \subsection{Support Vector Machine}
-Support vector machine can be seen as a generalized version of linear classifier. To classify data set which is not linear separatable, SVM maps each example into a higher dimensional feature space, and find a hyper plane, which separate different classes. The margin of hyper plane is defined as the distance of the plane to the closest example. Hyper plane with large margin is preferred. All calculation of feature vector with high dimension can be done by kernel function, which makes training and testing more efficient. Although new kernel functions are being purposed by researchers, four basic kernels are most popular:\cite{SVM}
+Support vector machine can be seen as a generalized version of linear classifier. SVM maps each instance into a higher dimensional feature space, and look for a hyper plane, which separate different classes. Hyper plane with large margin is preferred. All calculation of feature vector with high dimension can be done via kernel function, which makes training and testing terminates in feasible time. Although new kernel functions are being purposed by researchers, four basic kernels are most popular\cite{SVM}:
 \begin{itemize}
 \item linear: $K(x_i,x_j)=x_i^Tx_j$\\
 \item polynomial: $K(x_i,x_j)=(\gamma x_i^Tx_j+r)^d$, $\gamma >0$\\
 \item radial basis function (RBF): $K(x_i,x_j)=\exp(-\gamma + \|x_i-x_j\|^2)$, $\gamma > 0$\\
 \item sigmoid: $K(x_i,x_j)=tanh(\gamma x_i^Tx_j+r)$\\
 \end{itemize}
-According to Keerthi and Lin (2003) and (Lin and Lin, 2003), linear kernel is a special case of RBF kernel, and sigmoid kernel behaves like RBF kernel with certain parameters. So in this paper, we only use RBF kernels.\\
-There are many kinds of SVMs based on different error function it aims to minimize. In this paper, we simply use C-svm, which minimize function:
- subject to:$$\frac{1}{2}\|\vec{\beta}\|^2+C\sum_{i=1}^n \xi_i$$
+According to \cite{SSK} and \cite{LL}, linear kernel is a special case of RBF kernel, and sigmoid kernel behaves like RBF kernel with certain parameters. So in this paper, we only use RBF kernels.\\
+There are many kinds of SVMs based on different error function. In this paper, we simply use C-svm, which minimize error function:
+    $$\frac{1}{2}\|\vec{\beta}\|^2+C\sum_{i=1}^n \xi_i$$
  subject to:$$y_i(\vec{\beta}.\vec{x_i}+\beta{0})\geq 1-\xi_i$$$$\forall i, \xi_i\geq 0$$
 
-For C-SVM using RBF kernel, $C$ and $\gamma$ are adjustable parameters. To find the optimal parameter, we can use grid-search proposed in \cite{SVM}: construct exponential growth sequence of $C$ and $\gamma$, and use a coarse grid search to find a ``better'' region, and apply grid search on that region to find more accurate parameters. Tools provided in \emph{libsvm} package are used to perform the model selection automatically.\\
-As shown in Figure 3, the SVM tends to perform best when $C=2.0$ and $\gamma=0.0078125$, and the error rate is 4.2059\%.
+Note that $C$ in the error function, and $\gamma$ in the kernel function are adjustable parameters. To find the optimal parameter, we can use grid-search\cite{SVM}: construct exponential growth sequence of $C$ and $\gamma$, and use a coarse grid search and cross validation to find a ``better'' region. Apply more accurate grid search on that region to find the best parameters. Grid search is a greedy algorithm, which gives local optimal result. In this paper, tools provided in libsvm\cite{LIBSVM} package are used to perform the model selection automatically.\\
+As shown in Figure 3, the SVM tends to have better performance when $C=2.0$ and $\gamma=0.0078125$, and the error rate achieved is 4.2059\%.
 
 \begin{figure}
 \centering
@@ -144,30 +160,43 @@ As shown in Figure 3, the SVM tends to perform best when $C=2.0$ and $\gamma=0.0
 
 \section{Improvement}
 \subsection{Motivation}
-One observation is that for decision tree and SVM, the order of attributes is not important for training and classification. In other word, if some fixed permutation is applied on the attributes of each example in the data set, then decision tree and SVM will generate the same model as the model generated by original data set.\\
-However, the position of pixel is important in the process of human being recognizing a hand written digit. If the pixel of an image randomly re arranged, a human is very unlikely to recognize what's in the image. This motivate the preprocessing of data, which can make use of position information of pixels. In this paper, we try to add some attributes derived by position information.
-\subsection{Adding Features}
-To provide information about the position of pixels, we choose to add $16$ extra attributes $r[16]$, one for each row, which describes how many ``black segments'' are there in the row. In image of $1$, most of $r[i]$ can be expected to be $1$, and some can be $2$, depends on the way of writing. In image of 0, most $r[i]$ can be expected to be 2.
-Similarly, 16 more attributes $c[16]$ is added for each column, which means the number of `black segments'' in each column.
-The variance of the number of black pixels in each row, and the variance of the number of black pixels in each column are also added into each example.
+One observation from the algorithms is that neither decision tree nor SVM, makes use of the information about the order of attributes. Actually, if some fixed permutation is applied on the attributes of each example in the data set, then decision tree and SVM will generate the same model as the model generated by original data set.(subtle difference may exists, which depends on how to deal with ``tie conditions''. e.g. two attributes have the same information gain in C4.5)\\
+However, the positions of pixel are important for human when recognizing a image. If the pixel of an image randomly re arranged, it is very unlikely to recognize the image for human. If decision tree and SVM can make use of these information, their performance can be expected to have further improvement.\\
 
+\subsection{Adding Features}
+One possible solution is to make position information of pixels available to algorithms. In this paper, we try to add some attributes derived by position information.\\
+We choose to add $16$ extra attributes $r[16]$, one for each row, which describes how many ``black segments'' are there in the row. For example, in a image of $1$, most of $r[i]$ can be expected to be $1$; in a image of 0, most $r[i]$ can be expected to be 2, and a few can be 1. Similarly, 16 more attributes $c[16]$ is added for each column, which means the number of `black segments'' in each column.\\
+The variance of the number of black pixels in each row and column are also added into each example, which can bring in some information about the distribution of pixels.\\
 34 extra features are added into each examples.The modified data set has 290 features for each example.
-\subsection{Testing}
+\subsection{Testing On Modified Data Set}
 \vspace{0.5cm}
 \begin{tabular}{c c c}
 Algorithm		&	Original Data	&Modified Data\\
 \hline \hline
-C4.5($C=1, minObj=2$)           &23.7916\%		& 18.5813\%\\
-Boosted C4.5(32 iterations)	    &7.7841\%		& 4.5198\%\\
-Boosted C4.5(64 iterations)	    &6.6541\%		& 4.457\%\\
-SVM($C=2, \gamma=0.0078125$)	&4.2059\%       & 3.2643\%\\
+C4.5                            &23.7916\%		& 18.5813\%\\
+Pairwise C4.5                   &15.5345\%      & 12.3899\%\\
+Boosted C4.5(32 iter)	        &7.7841\%		& 4.5198\%\\
+Boosted PW C4.5(32 iter)	    &6.8553\%       & 5.2830\%\\
+SVM                         	&4.2059\%       & 3.2643\%\\
 \end{tabular}
 \vspace{0.5cm}\\
-In the testing, From the result, we can see improvements on all algorithms are significant. All algorithm's error rate on modified data drop down to the $\frac{3}{4}$ of the original data.\\
-Although decision tree and SVM use completely different way to look for target hypothesis, attributes which contains position information of pixels helps both of them improve accuracy. It can be expected that adding more features derived by position information of pixels could further improve the accuracy, and the improvement may be observed on other algorithms. This technique can be expected to work on general image classification problem whose data set only contains information about pixels color of images.
+From the result, we can see improvements on all algorithms are significant. All algorithms' error rates on modified data drop down to some extent.\\
+By ranking the information gain of all attributes of the data set, in top 15 features, 14 of them are newly added features; 21 out of top 34 new features ranks less than 30. \\
+In the decision tree constructed for the new data set, new features are made heavily used of, and the size of the tree is 229, which is smaller than the size of the tree for the old data set:293. According to the inductive bias of C4.5, smaller trees tends to generalize better. So C4.5 could perform better on the modified data set.\\
+SMO algorithm gives 139 support vectors when trained by the whole original data set, while only 115 is obtained on the new data set, even though the number of attributes increases. The number of support vectors can be seen as the complexity of the classifier. SVM have better performance on the new data set can be considered as the result of Ocam's Razor principle.\\
+Although decision tree and SVM use completely different way to look for target hypothesis, position information of pixels does help both of them improve accuracy.
+\subsection{Testing on MNIST Data set}
+MNIST(\url{http://yann.lecun.com/exdb/mnist/}) is a data set which is a popular handwritten digit data set. This data set contains 60000 instances in training set, and 10000 testing in testing set. To make time cost feasible, we make a random sample of 1800 instances from the training set, and use it as training set. We use the testing data set(10000 instance) to test, since testing is relatively fast, and large testing set may give closer result to the real accuracy on unseen data. The range of feature in the original data set is 0 to 256, which is too large. We normalize attributes of instances to range from 0 to 1. This is to avoid attributes in greater numeric ranges dominate those in smaller numeric ranges. Another advantage is to avoid numerical difficulties when calculating vector inner product\cite{SVM}.(We do not need to normalize the Semeion data set because the range of features are between 0 and 1 initially). Grid search showed that $C=8, \gamma=0.0078125$ gives relatively good performance, which gives error rate  6.4\% on testing set. By adding extra features(also normalized) into the data set, and error rate reduces to 5.72\%.\\
+This technique can be expected to work on general image classification problem whose data set only contains information about pixels color of images.
 
+\section{Further Work}
+\begin{enumerate}
+ \item How it performs on other multi-class classification problems
+ \item Apply other method to build multi-class C4.5 based on 0-1 C4.5(e.g. one-versus-all)
+ \item Whether adding more features derived by position information of pixels could further improve the accuracy, and whether improvement may be observed on other algorithms.
+\end{enumerate}
 \section{Conclusion}
-By applying several machine learning algorithms on Semeion Handwritten Digit Data Set, we can observe that C4.5 algorithm performs poorly even after choosing appropriate parameters, while boosted C4.5 has a much better performance. C-SVM with RBF kernel managed to reach 4.2059\% error rate after parameter search. By adding extra information into the data set, the error rate for all these algorithm drops down to about $3/4$ of their original error rate.
+By applying several machine learning algorithms on Semeion Handwritten Digit Data Set, we can observe that C4.5 algorithm performs poorly, and adjusting parameters doesn't change the result much. Pairwise C4.5 performs better than C4.5 on this data set. Boosted C4.5 has a much better performance, and the same as Boosted Pairwise C4.5. C-SVM with RBF kernel managed to reach 4.2059\% error rate after parameter search. By adding extra information into the data set, the error rate for all these algorithm drops to some extent, and SVM achieves error rate of 3.2643\%.
 
 \bibliographystyle{h-physrev3}
 \bibliography{ref}
