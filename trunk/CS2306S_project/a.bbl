@@ -3,6 +3,11 @@
 \bibitem{Kussul_improvedmethod}
 E.~Kussul and T.~Baidyk.
 
+\bibitem{LIBSVM}
+C.-C. Chang and C.-J. Lin,
+\newblock {\em {LIBSVM}: a library for support vector machines}, 2001,
+\newblock Software available at \url{http://www.csie.ntu.edu.tw/~cjlin/libsvm}.
+
 \bibitem{Morgan.Kaufmann}
 Morgan.Kaufmann,
 \newblock Data mining practical machine learning tools, 2005.
@@ -26,12 +31,6 @@ S.~S. Keerthi and C.-J. Lin,
 \bibitem{LL}
 H.-T. Lin and C.-J. Lin,
 \newblock Technical report, Department of Computer Science, National Taiwan
-  University  (2003),
-\newblock http://www.csie.ntu.edu.tw/~cjlin/papers/tanh.pdf.
-
-\bibitem{LIBSVM}
-C.-C. Chang and C.-J. Lin,
-\newblock {\em {LIBSVM}: a library for support vector machines}, 2001,
-\newblock Software available at \url{http://www.csie.ntu.edu.tw/~cjlin/libsvm}.
+  University  (2003).
 
 \end{thebibliography}
