@@ -1,0 +1,7 @@
+Analyse result
+--why SVM performs well
+--how to break SVM
+
+Analyse how decision tree,SVM made use of extra attributes.
+
+read paper of the dataset

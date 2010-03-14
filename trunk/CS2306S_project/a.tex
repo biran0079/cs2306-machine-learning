@@ -46,7 +46,7 @@ The order of the examples in the data set is shuffled before training and testin
 \section{Evaluation}
 
 The data set contains 1593 instances, which not very big. In this paper, cross validation is used to perform testing. \\
-By applying cross validation on different fold number using C4.5 algorithm(with default parameter in WEKA), we observe that the error rate almost keeps still after 8 fold. 8-folds cross validation is very likely to provide accurate estimation of the real error rate on unseen data. In this paper, 10-folds cross validation is used for testing.\\
+By applying cross validation on different fold number using C4.5 algorithm(with default parameters in WEKA), we observe that the error rate almost keeps still after 8 fold. 8-folds cross validation is very likely to provide accurate estimation of the real error rate on unseen data. In this paper, we apply 10-folds cross validation on the whole Semeion Handwritten Digit Data Set for testing, and compare the error rates of different algorithms.\\
 \emph{WEKA}(\url{http://www.cs.waikato.ac.nz/ml/weka/}) is used for training and testing of C4.5 and boosted C4.5 algorithm, and \emph{libsvm} package(\url{http://www.csie.ntu.edu.tw/~cjlin/libsvm/}) implemented by Chih-Chung Chang and Chih-Jen Lin is used for training and testing SVM in this paper.\\
 
 \vspace{0.5cm}
@@ -64,8 +64,10 @@ Fold Number & Error Rate\\
 \vspace{0.5cm}\\
 \section{Testing}
 \subsection{C4.5}
-Decision tree is a popular algorithm in data mining and machine learning. Decision tree represents a hypothesis in form of a tree. Each node denote an attribute, and each edge represent the condition which lead to the corresponding child node. Leaves contains labels, which are the result of classification. There are many decision tree algorithms, and we only consider C4.5 in this paper. C4.5 is an improved version of ID3 algorithm. C4.5 algorithm follows a simple inductive bias, which is ``smaller trees are preferred''. This inductive bias is motivated by Occan's Razor principle, and it works well in practice.\\
-Decision tree has the problem of over fitting. C4.5 use some adjustable parameters to perform pruning and limit the size of the tree, and therefore reduce over fitting. To achieve good performance, we perform parameter search on two parameters: $C$ and $minObj$. C is the confident factor, which is a probability threshold of the probability of the actual error rate is worse than the pessimistic estimation based on some reasonable assumption\cite{Morgan.Kaufmann}. The pessimistic estimation of the error rate for each subtree is used when do the subtree replacement and subtree raising pruning in C4.5 algorithm. Smaller confidence factor implies more pessimistic estimation, which will cause more drastic pruning. The $minObj$ variable limit the minimum number of examples each leaf could have. This constrain can help reduce the effect of noise in the data set, especially when the size of data set is large.
+Decision tree is a popular algorithm in data mining and machine learning. There are many decision tree algorithms. We only apply C4.5 in this paper. C4.5 is an improved version of ID3 decision tree. It follows a simple inductive bias, which is ``smaller trees are preferred''. This inductive bias is motivated by Occan's Razor principle, and it works well in practice.\\
+To further simplify the decision tree to avoid over fitting problem, C4.5 perform pruning to limit the size of the tree. To achieve good performance, we perform parameter search on two parameters: $C$ and $minObj$. \\
+$C$ is confident factor, which is a probability threshold of the probability of the actual error rate being worse than the pessimistic estimation\cite{Morgan.Kaufmann}. The pessimistic estimation of the error rate for each subtree is used when do the subtree replacement and subtree raising pruning in C4.5 algorithm. Smaller confidence factor implies more pessimistic estimation, which will cause more drastic pruning.\\
+The $minObj$ variable limit the minimum number of examples each leaf could have. This constrain can help reduce the size of the tree, thus makes the tree more robust to the effect of noise.
 \vspace{0.5cm}\\
 \begin{tabular}{c|c c c c}
 C$\backslash$ minObj	&1		&2		&3		&4\\
@@ -77,8 +79,13 @@ C$\backslash$ minObj	&1		&2		&3		&4\\
 1	&24.6077 \%	&23.7916 \%	&24.1682 \%	 &24.796  \%\\
 \end{tabular}
 \vspace{0.5cm}\\
-The result in the table above shows that he error rate of C4.5 algorithm is lowest when $C=1$ and $minObj=2$, which gives error rate of 23.7916\%. This implies that not much pruning is needed to achieve good performance on this data set.\\
-This result is very poor compared to many other popular algorithms like support vector machine(will see it later). This is because the limitation of decision tree algorithm itself. The problem of learning optimal decision tree is NP-complete\cite{DT_NPC}. C4.5 use a greedy algorithm which does not guarantee to find the optimal decision tree. Some concepts are harder to learn for decision tree, like XOR function.\\
+The result in the table above shows that he error rate of C4.5 algorithm is lowest when $C=1$ and $minObj=2$, which gives error rate of 23.7916\%. This implies that pruning does not help much in this data set.\\
+This result is very poor compared to many other popular algorithms like support vector machine(will see it later). There are some possible reasons:\\
+\begin{enumerate}
+\item[1] This is because the limitation of decision tree algorithm itself. The problem of learning optimal decision tree is NP-complete\cite{DT_NPC}. C4.5 use a greedy algorithm, which does not guarantee to find the optimal decision tree.\\
+\item[2] Although decision tree can estimate any discrete functions, it is difficult to learn certain functions like OXR, because the minimal decision tree for XOR requires a full binary tree with each leaf for one instance, and it is hard to find ``small'' trees to estimate XOR well.
+\item[3] C4.5 decision tree supports multi-class classification problem. More classes would result in larger trees. For example, if there are $N$ classes, and each attribute is binary. Since each leaf can only represent one class, the height of the tree must be larger than $log_2(N)$. Larger tree would contradict to Occan's Razor principle. Thus, C4.5 may not perform well in multi-class classification problems.
+\end{enumerate}
 
 \subsection{Boosting}
 Boosting is an algorithm which aims to boost week classifier into a strong classifier. The boosting algorithm used here is AdaBoosting M1, which is
