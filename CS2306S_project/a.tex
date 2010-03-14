@@ -79,20 +79,31 @@ C$\backslash$ minObj	&1		&2		&3		&4\\
 1	&24.6077 \%	&23.7916 \%	&24.1682 \%	 &24.796  \%\\
 \end{tabular}
 \vspace{0.5cm}\\
-The result in the table above shows that he error rate of C4.5 algorithm is lowest when $C=1$ and $minObj=2$, which gives error rate of 23.7916\%. This implies that pruning does not help much in this data set.\\
+The result in the table above shows that he error rate of C4.5 algorithm is lowest when $C=1$ and $minObj=2$, which gives error rate of 23.7916\%. The differences between error rates are very small, which implies that pruning does not help much in this data set.\\
 This result is very poor compared to many other popular algorithms like support vector machine(will see it later). There are some possible reasons:\\
 \begin{enumerate}
 \item[1] This is because the limitation of decision tree algorithm itself. The problem of learning optimal decision tree is NP-complete\cite{DT_NPC}. C4.5 use a greedy algorithm, which does not guarantee to find the optimal decision tree.\\
 \item[2] Although decision tree can estimate any discrete functions, it is difficult to learn certain functions like OXR, because the minimal decision tree for XOR requires a full binary tree with each leaf for one instance, and it is hard to find ``small'' trees to estimate XOR well.
 \item[3] C4.5 decision tree supports multi-class classification problem. More classes would result in larger trees. For example, if there are $N$ classes, and each attribute is binary. Since each leaf can only represent one class, the height of the tree must be larger than $log_2(N)$. Larger tree would contradict to Occan's Razor principle. Thus, C4.5 may not perform well in multi-class classification problems.
 \end{enumerate}
-
+We can overcome the 3rd effect mentioned above by converting multi-class classification problem into two-class classification problem.\\
+Several possible methods can be used for this conversion. We only consider ``pairwise'' method in this paper. Pairwise method train $C_N^2$ classifiers for each pair of classes($N$ is the number of classes). When classifying a new instance, each classifier classifies the new instance, and vote for the class based on their results. The class with the highest vote is considered as the classification result. If draw happens, randomly choose one of the classes with the highest vote.\\
+Weka itself does not support this conversion, so I wrote a separate program based on WEKA's library to do this test.
+Source code is available at \url{http://code.google.com/p/cs2306-machine-learning/source/browse/trunk/J48Test.java}\\
+\vspace{0.5cm}
+\begin{tabular}{c c}
+Algorithm	& Error rate\\
+\hline \hline
+original C4.5	& 23.7916\%\\
+pairwise C4.5	& 15.5345\%\\
+\end{tabular}
+\vspace{0.5cm}\\
+We can see from the table that pairwise C4.5 performs much better than original C4.5. This is because in pairwise C4.5, although there are more decision trees, the size of each tree is small(about 20 on average). However, the size of the tree for the original C4.5 is 293(use full data set to train). Thus, pairwise C4.5 performs better, since small trees are more likely to generalize well on unseen data.
 \subsection{Boosting}
 Boosting is an algorithm which aims to boost week classifier into a strong classifier. The boosting algorithm used here is AdaBoosting M1, which is
 generalization of AdaBoosting algorithm on multiple class classification problem.\\
 The boosting algorithm constructs the classifier by several iterations, each iteration obtains a classifier by a weighted data set, and the output of the final classifier is obtained by weighted sum of the results of all classifiers. After each iteration, data set is reweighted, and misclassified instances has a larger weight so that they are paid more attention on in the next iteration. The weight of each classifier is decided by their accuracy. Boosting works well with decision tree in practice, and it often does not suffer from over fitting problem.\\
-Following result is obtained by applying boosting on C4.5 algorithm($C=1$ and $minObj=2$) with different number of iterations.
-
+Following result is obtained by applying boosting on C4.5 algorithm($C=1$ and $minObj=2$) with different number of iterations.\\
 \vspace{0.5cm}
 \begin{tabular}{c c}
 Number of Iterations	& Error rate\\
