@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2009.12.23)  26 FEB 2010 23:57
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2009.12.23)  14 MAR 2010 13:56
 entering extended mode
 **a.tex
 (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.tex
@@ -218,58 +218,63 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--65
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--82
+Underfull \hbox (badness 10000) in paragraph at lines 67--84
 
  []
 
 [3]
-Overfull \hbox (1.5938pt too wide) in paragraph at lines 84--88
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
+
+ []
+
+
+Overfull \hbox (1.5938pt too wide) in paragraph at lines 91--95
 \OT1/cmr/m/n/10.95 gen-er-al-iza-tion of Ad-aBoost-ing al-go-rithm on mul-ti-pl
 e class clas-si-fi-ca-tion prob-
  []
 
 [4]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 108.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 115.
 
  (C:\CTEX\MiKTeX\tex\latex\base\omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 108.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 115.
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--109
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 110--111
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 117--118
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
  []
 
-[5] <digit.jpg, id=30, 481.8pt x 361.35pt>
+<digit.jpg, id=30, 481.8pt x 361.35pt>
 File: digit.jpg Graphic file (type jpg)
- <use digit.jpg> [6 <C:/Users/BiRan/Desktop/cs2306-machine-learning/CS2306S_pro
-ject/digit.jpg>] [7]
+ <use digit.jpg> [6] [7 <C:/Users/BiRan/Desktop/cs2306-machine-learning/CS2306S
+_project/digit.jpg>]
 (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.bbl) [8]
 (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.aux) ) 
 Here is how much of TeX's memory you used:
  2055 strings out of 495285
  24330 string characters out of 3181586
- 78138 words of memory out of 3000000
+ 77138 words of memory out of 3000000
  5229 multiletter control sequences out of 15000+200000
  13030 words of font info for 53 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 27i,7n,24p,939b,217s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,7n,24p,651b,217s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/CTE
 X/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/CTEX/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmbx12.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cm
@@ -280,7 +285,7 @@ TeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/CTEX/MiKTeX/fonts/type1/public
 /type1/public/amsfonts/cm/cmr8.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmsy10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/CTE
 X/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on a.pdf (8 pages, 250627 bytes).
+Output written on a.pdf (8 pages, 251714 bytes).
 PDF statistics:
  80 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
