@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2009.12.23)  14 MAR 2010 22:24
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2009.12.23)  14 MAR 2010 23:26
 entering extended mode
 **a.tex
 (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.tex
@@ -268,7 +268,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 167--178
 
  []
 
-[9] [10] (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.bbl)
+[9]
+Overfull \hbox (0.68135pt too wide) in paragraph at lines 199--200
+[]\OT1/cmr/m/n/10.95 Apply other method to build multi-class C4.5 based on bi-n
+ary C4.5(e.g.
+ []
+
+[10] (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.bbl)
 [11] (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.aux)
 
 LaTeX Font Warning: Size substitutions with differences
@@ -294,7 +300,7 @@ amsfonts/cm/cmr8.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C
 :/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/CTEX/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmti10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmtt10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on a.pdf (11 pages, 295230 bytes).
+Output written on a.pdf (11 pages, 295233 bytes).
 PDF statistics:
  101 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
