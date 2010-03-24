@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2009.12.23)  14 MAR 2010 23:26
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2009.12.23)  24 MAR 2010 23:38
 entering extended mode
 **a.tex
 (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.tex
@@ -283,12 +283,12 @@ LaTeX Font Warning: Size substitutions with differences
  ) 
 Here is how much of TeX's memory you used:
  2082 strings out of 495285
- 24574 string characters out of 3181586
+ 24572 string characters out of 3181586
  78147 words of memory out of 3000000
  5246 multiletter control sequences out of 15000+200000
  15783 words of font info for 66 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 27i,8n,24p,1027b,258s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,8n,24p,1027b,248s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/CTEX/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmbx12.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmex10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:
@@ -300,7 +300,7 @@ amsfonts/cm/cmr8.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C
 :/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/CTEX/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmti10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmtt10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on a.pdf (11 pages, 295233 bytes).
+Output written on a.pdf (11 pages, 297880 bytes).
 PDF statistics:
  101 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
