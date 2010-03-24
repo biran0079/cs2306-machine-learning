@@ -14,14 +14,14 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-Handwritten digits recognition is a classic problem of machine learning. The objective is to recognize images of single handwritten digits(0-9). This paper will apply C4.5 decision tree, pairwise C4.5, boosted C4.5, and support vector machine(SVM) on this problem, compare their performance, and finally propose a method to improvement the classification accuracy by adding attributes into data set.
+Handwritten digits recognition is a classic problem of machine learning. The objective is to recognize images of single handwritten digits(0-9). This paper will apply C4.5 decision tree, pairwise C4.5, boosted C4.5, and support vector machine(svm) on this problem, compare their performance, and finally propose a method to improvement the classification accuracy by adding attributes into data set.
 \end{abstract}
 \section{Introduction}
 Handwritten digit recognition recognition is a classification problem. The performance of classification algorithm heavily depends on properties of data set.
 In this paper, Semeion Handwritten Digit Data Set is used for training and testing. The first part of the paper will show the testing result of C4.5, boosted C4.5 and SVM algorithms. We also introduce a optimized version of C4.5 algorithm: pairwise C4.5, which outperforms C4.5 on Semeion data set. Parameter search is applied to achieve relatively good performance for C4.5 and SVM.
 The second part will introduce a method to improve accuracy of classifiers by adding extra features into data set. It will be shown that performances of all three algorithms have significant improvement on the modified data set, and SVM with RBF kernel achieves error rate of 3.2643\%.
 \section{Background and Motivation}
-Handwritten digit recognition has important usage such as recognizing zip code, online recognition on computer tablets. Algorithms like support vector machine and multi layer perceptron are commonly used on this problem, and impressive result has been achieved. Lenet and its boosted version managed to get error rate less than 1\% on MNIST data set\cite{Kussul_improvedmethod}. Decision tree is rarely applied on this problem, SVM gives one of the algorithms which gives the lowest error rate on this problem. It is interesting to see whether it is possible to achieve high accuracy from decision tree algorithm, and improve the performance of SVM. These two completely different algorithm are also used to support the method mentioned in the second part of the paper.
+Handwritten digit recognition has important usage such as recognizing zip code, online recognition on computer tablets. Algorithms like support vector machine and multi layer perceptron are commonly used on this problem, and impressive result has been achieved. Lenet and its boosted version managed to get error rate less than 1\% on MNIST data set\cite{kussulimprovedmethod}. Decision tree is rarely applied on this problem, SVM gives one of the algorithms which gives the lowest error rate on this problem. It is interesting to see whether it is possible to achieve high accuracy from decision tree algorithm, and improve the performance of SVM. These two completely different algorithm are also used to support the method mentioned in the second part of the paper.
 \section{Data set}
 Semeion Handwritten Digit Data Set(\url{http://archive.ics.uci.edu/ml/datasets/Semeion+Handwritten+Digit}) is used in this paper. 1593 handwritten digits from around 80 persons were scanned, stretched in a rectangular box 16x16 in a gray scale of 256 values.Then each pixel of each image was scaled into a boolean (1/0) value using a fixed threshold. This data set contains no missing values.\\
 Each person wrote on a paper all the digits from 0 to 9, twice. The commitment was to write the digit the first time in the normal way (Figure 1) and the second time in a fast way (Figure 2).
@@ -44,7 +44,7 @@ The order of the examples in the data set is shuffled before training and testin
 
 In this paper, cross validation is used to perform testing. \\
 By applying cross validation on different fold number using C4.5 algorithm, we observe that the error rate almost keeps still after 8 fold. 8-folds cross validation is very likely to provide accurate estimation of the real error rate on unseen data. In this paper, we apply 10-folds cross validation on the whole Semeion Handwritten Digit Data Set, and compare the error rates of different algorithms.\\
-\emph{WEKA}(\url{http://www.cs.waikato.ac.nz/ml/weka/}) is used for training and testing of C4.5 and boosted C4.5 algorithm. \emph{libsvm} package\cite{LIBSVM} is used for training and testing SVM in this paper.\\
+\emph{WEKA}(\url{http://www.cs.waikato.ac.nz/ml/weka/}) is used for training and testing of C4.5 and boosted C4.5 algorithm. \emph{libsvm} package\cite{libsvm} is used for training and testing SVM in this paper.\\
 \vspace{0.5cm}\\
 \begin{tabular}{c c}
 Fold Number & Error Rate\\
@@ -62,7 +62,7 @@ Fold Number & Error Rate\\
 \subsection{C4.5}
 Decision tree is a popular algorithm in data mining and machine learning. There are many decision tree algorithms. We only apply C4.5 in this paper. C4.5 is an improved version of ID3 decision tree. It follows a simple inductive bias, which is ``smaller trees are preferred''. This inductive bias is motivated by Occan's Razor principle, and it works well in practice.\\
 To further simplify the decision tree to avoid over fitting problem, C4.5 perform pruning to limit the size of the tree. To achieve good performance, we perform parameter search on two parameters: $C$ and $minObj$. \\
-$C$ is confident factor, which is a probability threshold of the probability of the actual error rate being worse than the pessimistic estimation\cite{Morgan.Kaufmann}. The pessimistic estimation of the error rate for each subtree is used when do the subtree replacement and subtree raising pruning in C4.5 algorithm. Smaller confidence factor implies more pessimistic estimation, which will cause more drastic pruning.\\
+$C$ is confident factor, which is a probability threshold of the probability of the actual error rate being worse than the pessimistic estimation\cite{morgan.kaufmann}. The pessimistic estimation of the error rate for each subtree is used when do the subtree replacement and subtree raising pruning in C4.5 algorithm. Smaller confidence factor implies more pessimistic estimation, which will cause more drastic pruning.\\
 The $minObj$ variable limit the minimum number of examples each leaf can have. This constrain can help reduce the size of the tree, thus makes the tree more robust to the effect of noise.
 \vspace{0.5cm}\\
 \begin{tabular}{c|c c c c}
@@ -78,7 +78,7 @@ C$\backslash$ minObj	&1		&2		&3		&4\\
 The result in the table above shows that he error rate of C4.5 algorithm is lowest when $C=1$ and $minObj=2$, which gives error rate of 23.7916\%. The differences between error rates are very small, which implies that pruning does not help much in this data set.\\
 This result is very poor compared to many other popular algorithms like support vector machine(will see it later). There are some possible reasons:\\
 \begin{enumerate}
-\item[1] Decision tree algorithm itself has limitation. The problem of learning optimal decision tree is NP-complete\cite{DT_NPC}. C4.5 use a greedy algorithm, which does not guarantee to find the optimal decision tree.
+\item[1] Decision tree algorithm itself has limitation. The problem of learning optimal decision tree is NP-complete\cite{dtnpc}. C4.5 use a greedy algorithm, which does not guarantee to find the optimal decision tree.
 \item[2] Although decision tree can estimate any discrete functions, it is difficult to learn certain functions. e.g. OXR function is hard to learn by decision tree, because the minimal decision tree for XOR requires a full binary tree , and it is hard to find ``small'' trees to estimate XOR.
 \item[3] Although C4.5 decision tree supports multi-class classification problem, more classes would result in larger trees. For example, if there are $N$ classes, and each attribute is binary. Since each leaf can only represent one class, the height of the tree must be larger than $log_2(N)$. If the size of decision trees generated by C4.5 follows some fixed distribution, then the size of decision tree tends to become larger when the minimal possible tree size becomes larger. Larger tree would contradict to Occan's Razor principle. Thus, C4.5 may not perform well in multi-class classification problems.
 \end{enumerate}
@@ -131,7 +131,7 @@ We can also apply boosting on Pairwise C4.5. The result is shown in the table be
 The result shows that boosted Pairwise C4.5 algorithm over performs boosted C4.5 algorithm, which is not surprising.\\
 
 \subsection{Support Vector Machine}
-Support vector machine can be seen as a generalized version of linear classifier. SVM maps each instance into a higher dimensional feature space, and look for a hyper plane, which separate different classes. Hyper plane with large margin is preferred. All calculation of feature vector with high dimension can be done via kernel function, which makes training and testing terminates in feasible time. Although new kernel functions are being purposed by researchers, four basic kernels are the most popular\cite{SVM}:
+Support vector machine can be seen as a generalized version of linear classifier. SVM maps each instance into a higher dimensional feature space, and look for a hyper plane, which separate different classes. Hyper plane with large margin is preferred. All calculation of feature vector with high dimension can be done via kernel function, which makes training and testing terminates in feasible time. Although new kernel functions are being purposed by researchers, four basic kernels are the most popular\cite{svm}:
 \begin{itemize}
 \item linear: $K(x_i,x_j)=x_i^Tx_j$\\
 \item polynomial: $K(x_i,x_j)=(\gamma x_i^Tx_j+r)^d$, $\gamma >0$\\
@@ -143,7 +143,7 @@ There are many kinds of SVMs based on different error function. In this paper, w
     $$\frac{1}{2}\|\vec{\beta}\|^2+C\sum_{i=1}^n \xi_i$$
  subject to:$$y_i(\vec{\beta}\cdot \vec{x_i}+\beta{0})\geq 1-\xi_i$$$$\forall i, \xi_i\geq 0$$
 
-Note that $C$ in the error function, and $\gamma$ in the kernel function are adjustable parameters. To find the optimal parameter, we can use grid-search\cite{SVM}: construct exponential growth sequence of $C$ and $\gamma$, and use a coarse grid search and cross validation to find a ``better'' region. Apply more accurate grid search on that region to find the best parameters. Grid search is a greedy algorithm, which gives local optimal result. In this paper, tools provided in libsvm\cite{LIBSVM} package are used to perform the model selection automatically.\\
+Note that $C$ in the error function, and $\gamma$ in the kernel function are adjustable parameters. To find the optimal parameter, we can use grid-search\cite{svm}: construct exponential growth sequence of $C$ and $\gamma$, and use a coarse grid search and cross validation to find a ``better'' region. Apply more accurate grid search on that region to find the best parameters. Grid search is a greedy algorithm, which gives local optimal result. In this paper, tools provided in libsvm\cite{libsvm} package are used to perform the model selection automatically.\\
 As shown in Figure 3, the SVM tends to have better performance when $C=2.0$ and $\gamma=0.0078125$, and the error rate achieved is 4.2059\%.
 
 \begin{figure}
@@ -181,7 +181,7 @@ In the decision tree constructed for the new data set, new features are made hea
 SMO algorithm gives 139 support vectors when trained by the whole original data set, while only 115 is obtained on the new data set. The number of support vectors can be seen as a measure of complexity of the classifier. SVM have better performance on the new data set can be considered as the result of Ocam's Razor principle.\\
 Although adding extra features makes data set more complicated, it actually makes classifiers simpler, thus generalize better.
 \subsection{Testing on MNIST Data set}
-MNIST(\url{http://yann.lecun.com/exdb/mnist/}) is a popular handwritten digit data set. This data set contains 60000 instances for training, and 10000 instances for testing. To make time cost feasible, we make a random sample of 1800 instances from the training set for training purpose. We use the whole testing data set(10000 instance) for testing, because testing is relatively fast, and large testing set would give closer result to the real accuracy on unseen data. The range of feature in the original data set is 0 to 256, which is too large. We normalize attributes of instances to range from 0 to 1. This is to avoid attributes in greater numeric ranges dominate those in smaller numeric ranges. Another advantage is to avoid numerical difficulties when calculating vector inner product\cite{SVM}.We do not need to normalize the Semeion data set because the range of features are between 0 and 1 initially. Grid search showed that $C=8, \gamma=0.0078125$ gives relatively good performance.\\
+MNIST(\url{http://yann.lecun.com/exdb/mnist/}) is a popular handwritten digit data set. This data set contains 60000 instances for training, and 10000 instances for testing. To make time cost feasible, we make a random sample of 1800 instances from the training set for training purpose. We use the whole testing data set(10000 instance) for testing, because testing is relatively fast, and large testing set would give closer result to the real accuracy on unseen data. The range of feature in the original data set is 0 to 256, which is too large. We normalize attributes of instances to range from 0 to 1. This is to avoid attributes in greater numeric ranges dominate those in smaller numeric ranges. Another advantage is to avoid numerical difficulties when calculating vector inner product\cite{svm}.We do not need to normalize the Semeion data set because the range of features are between 0 and 1 initially. Grid search showed that $C=8, \gamma=0.0078125$ gives relatively good performance.\\
 \vspace{0.5cm}
 \begin{tabular}{c c}
 Data Set	& Error rate\\
@@ -203,6 +203,6 @@ This technique can be expected to work on general image classification problem w
 Comparing performance of different algorithms on on Semeion Data Set, C4.5 algorithm performs poorly, and adjusting parameters doesn't change the result much; Pairwise C4.5 performs better than C4.5 on this data set. Boosted C4.5 has a much better performance, and similar for Boosted Pairwise C4.5. C-SVM with RBF kernel manages to reach 4.2059\% error rate after parameter search. Adding extra features into the data set, the error rate for all these algorithm drops to some extent, and SVM achieves error rate of 3.2643\%. Improvement of SVM is also observed on MNIST data set by adding extra features, and this technique can be expected to generalize on other image classification problems.
 
 \newpage
-\bibliographystyle{h-physrev3}
+\bibliographystyle{plain}
 \bibliography{ref}
 \end{document}

@@ -1,36 +1,44 @@
 \begin{thebibliography}{1}
 
-\bibitem{Kussul_improvedmethod}
-E.~Kussul and T.~Baidyk.
+\bibitem{libsvm}
+Chih-Chung Chang and Chih-Jen Lin.
+\newblock {LIBSVM: a library for support vector machines}, 2001.
+\newblock http://www.csie.ntu.edu.tw/~cjlin/libsvm.
 
-\bibitem{LIBSVM}
-C.-C. Chang and C.-J. Lin,
-\newblock {\em {LIBSVM}: a library for support vector machines}, 2001,
-\newblock Software available at \url{http://www.csie.ntu.edu.tw/~cjlin/libsvm}.
-
-\bibitem{Morgan.Kaufmann}
-Morgan.Kaufmann,
-\newblock Data mining practical machine learning tools, 2005.
-
-\bibitem{DT_NPC}
-R.~R. Laurent~Hyafil,
-\newblock Information Processing Letters  (1976).
-
-\bibitem{boosting}
-P.~B. W. S.~L. Robert E.~Schapire, Yoav~Freund,
-\newblock The Annals of Statistics  (1998).
-
-\bibitem{SVM}
-C.-C.~C. Chih-Wei~Hsu and C.-J. Lin,
-\newblock (2009).
+\bibitem{svm}
+Chih-Chung~Chang Chih-Wei~Hsu and Chih-Jen Lin.
+\newblock {\em A Practical Guide to Support Vector Classification}, 2009.
 
 \bibitem{SSK}
-S.~S. Keerthi and C.-J. Lin,
-\newblock Neural Computation  (2003).
+S.~S. Keerthi and C.-J. Lin.
+\newblock Asymptotic behaviors of support vector machines with gaussian kernel.
+\newblock {\em Neural Computation}, 2003.
+
+\bibitem{kussulimprovedmethod}
+Ernst Kussul and Tatyana Baidyk.
+\newblock Improved method of handwritten digit recognition.
+
+\bibitem{dtnpc}
+RL~Rivest Laurent~Hyafil.
+\newblock Constructing optimal binary decision trees is {NP-complete}.
+\newblock {\em Information Processing Letters}, 1976.
 
 \bibitem{LL}
-H.-T. Lin and C.-J. Lin,
-\newblock Technical report, Department of Computer Science, National Taiwan
-  University  (2003).
+H.-T. Lin and C.-J. Lin.
+\newblock A study on sigmoid kernels for {SVM} and the training of {non-PSD}
+  kernels by {SMO}-type methods.
+\newblock {\em Technical report, Department of Computer Science, National
+  Taiwan University}, 2003.
+
+\bibitem{morgan.kaufmann}
+Morgan.Kaufmann.
+\newblock {\em Data Mining Practical Machine Learning Tools}.
+\newblock morgan kaufmann publishers, second edition, 2005.
+
+\bibitem{boosting}
+Peter Bartlett Wee Sun~Lee Robert E.~Schapire, Yoav~Freund.
+\newblock Boosting the margin:a new explanation for the effectiveness of voting
+  methods.
+\newblock {\em The Annals of Statistics}, 1998.
 
 \end{thebibliography}
