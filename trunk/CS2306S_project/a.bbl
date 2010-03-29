@@ -9,21 +9,22 @@ Chih-Chung Chang and Chih-Jen Lin.
 Chih-Chung~Chang Chih-Wei~Hsu and Chih-Jen Lin.
 \newblock {\em A Practical Guide to Support Vector Classification}, 2009.
 
-\bibitem{SSK}
+\bibitem{ssk}
 S.~S. Keerthi and C.-J. Lin.
 \newblock Asymptotic behaviors of support vector machines with gaussian kernel.
 \newblock {\em Neural Computation}, 2003.
-
-\bibitem{kussulimprovedmethod}
-Ernst Kussul and Tatyana Baidyk.
-\newblock Improved method of handwritten digit recognition.
 
 \bibitem{dtnpc}
 RL~Rivest Laurent~Hyafil.
 \newblock Constructing optimal binary decision trees is {NP-complete}.
 \newblock {\em Information Processing Letters}, 1976.
 
-\bibitem{LL}
+\bibitem{lecun98}
+Bengio~Haffner LeCun, Bottou.
+\newblock Gradient-based learning applied to document recognition.
+\newblock {\em Proceedings of the IEEE}, 1998.
+
+\bibitem{ll}
 H.-T. Lin and C.-J. Lin.
 \newblock A study on sigmoid kernels for {SVM} and the training of {non-PSD}
   kernels by {SMO}-type methods.
@@ -40,5 +41,11 @@ Peter Bartlett Wee Sun~Lee Robert E.~Schapire, Yoav~Freund.
 \newblock Boosting the margin:a new explanation for the effectiveness of voting
   methods.
 \newblock {\em The Annals of Statistics}, 1998.
+
+\bibitem{slg92}
+G.~DREYFUS S.~KNERR, L.~PERSONNAZ.
+\newblock Handwritten digit recognition by neural networks with single-layer
+  training.
+\newblock {\em IEEE TRANSACTIONS ON NEURAL NETWORKS}, 1992.
 
 \end{thebibliography}
