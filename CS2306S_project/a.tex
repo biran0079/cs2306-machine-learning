@@ -59,7 +59,8 @@ C$\backslash$ minObj	&1		&2		&3		&4\\
 1	&24.6077 \%	    &23.7916 \%	&24.1682 \%	 &24.796  \%\\
 \end{tabular}
 \vspace{0.5cm}\\
-The result in the table above shows that he error rate of C4.5 algorithm is lowest(23.7916\%) when $C=1$ and $minObj=2$. It also shows that changing parameter has little influence on performance. This implies that pruning does not help much in this data set.\\
+
+Test is performed on WEKA with all default parameter settings except $C$ and $minObj$. The result in the table above shows that he error rate of C4.5 algorithm is lowest(23.7916\%) when $C=1$ and $minObj=2$. It also shows that changing parameter has little influence on performance. This implies that pruning does not help much in this data set.\\
 The performance of C4.5 is very poor compared to many other popular algorithms like support vector machine(will see it later). There are some possible reasons:\\
 \begin{enumerate}
 \item[1] Decision tree algorithm itself has limitation. The problem of learning optimal decision tree is NP-complete\cite{dtnpc}. C4.5 use a greedy algorithm to do searching, which does not guarantee to find the optimal decision tree.
@@ -68,16 +69,17 @@ The performance of C4.5 is very poor compared to many other popular algorithms l
 \end{enumerate}
 \subsubsection{Pairwise C4.5}
 The first two reasons above are limitations of decision tree, which is hard to overcome. The third one can be overcame by converting multi-class classification problem into binary classification problem. Therefore, a large decision tree could be replaced by several small decision trees, which can be expected to have better generalization.\\
-There are several methods to do this conversion, we only consider ``pairwise''(one-versus-one) method. Pairwise method train $N*(N-1)/2$ classifiers for each pair of classes($N$ is the number of distinct classes). When classifying a new instance, each classifier vote for the class based on their classification results. The class with the highest vote is considered as the classification result. If draw happens, the result is randomly chosen from those classes with the highest vote. Weka itself does not support this conversion, so a separate program(using WEKA's library) is used to perform this test\footnote{Source code is available at \url{http://code.google.com/p/cs2306-machine-learning/source/browse/#svn/trunk/src}}.\\
+There are several methods to do this conversion, we only consider ``pairwise''(one-versus-one) method. Pairwise method train $N*(N-1)/2$ classifiers for each pair of classes($N$ is the number of distinct classes). When classifying a new instance, each classifier vote for the class based on their classification results. The class with the highest vote is considered as the classification result. If draw happens, the result is randomly chosen from those classes with the highest vote. Note that Pairwise C4.5 is equivalent to normal C4.5 in binary classification problem.\\
+Weka itself does not support this conversion, so a separate program(using WEKA's library) is used to perform this test\footnote{Source code is available at \url{http://code.google.com/p/cs2306-machine-learning/source/browse/#svn/trunk/src}}.\\
 \vspace{0.5cm}\\
 \begin{tabular}{c c}
 Algorithm	& Error rate\\
 \hline \hline
-original C4.5	& 23.7916\%\\
-pairwise C4.5	& 15.5345\%\\
+normal C4.5	& 23.7916\%\\
+Pairwise C4.5	& 15.5345\%\\
 \end{tabular}
 \vspace{0.5cm}\\
-We can see from the table that pairwise C4.5 performs much better than original C4.5. In pairwise C4.5, although there are more decision trees, the size of each tree is small(about 20 nodes per tree on average). However, the size of the tree for the original C4.5 is 293. Thus, pairwise C4.5 performs better since small trees are more likely to generalize well on unseen data.
+Pairwise C4.5 is implemented based on C4.5 algorithm implemented in WEKA's library with default parameter setting: $C=0.25,minObj=2$. We can see from the table that pairwise C4.5 performs much better than original C4.5. In pairwise C4.5, although there are more decision trees, the size of each tree is small(about 20 nodes per tree on average). However, the size of the tree for the original C4.5 is 293. Thus, pairwise C4.5 performs better since small trees are more likely to generalize well on unseen data.
 \subsubsection{Boosted C4.5}
 Boosting is an algorithm which aims to boost weak classifier into a strong classifier. The boosting algorithm used in this paper is AdaBoosting M1 provided in WEKA.\\
 The boosting algorithm constructs the classifier by running several iterations. Each iteration obtains a classifier by a weighted data set, and the output of the final classifier is obtained by weighted sum of the results of all classifiers. After each iteration, data set is reweighted. Instances misclassified in the previous iteration has a larger weight so that they are more focused on in the future. The weight of each classifier is determined by their accuracy. Boosting works well with decision tree in practice, and it often does not suffer from over fitting problem.\\
@@ -114,19 +116,20 @@ We can also apply boosting on Pairwise C4.5. The result is shown in the table be
 The result shows that boosted Pairwise C4.5 algorithm over performs boosted C4.5 algorithm. As mentioned above, pairwise C4.5 consists of multiple(45 in this case) decision trees. In Boosted Pairwise C4.5, the number of decision trees grows 45 times faster than boosted normal C4.5. However, Boosted Pairwise C4.5 turns out to have better performance, which support the argument ``the complexity of boosting is not measured by the number of classifiers''.
 
 \subsection{Support Vector Machine}
-Support vector machine(SVM) can be seen as a generalized version of linear classifier. SVM maps each instance into a higher dimensional feature space, and look for a hyper plane, which separate different classes. Hyper plane with large margin is preferred. All calculation of feature vectors with high dimension can be done efficiently via kernel function. Although new kernel functions are being purposed by researchers, four basic kernels are the most popular\cite{svm}:
+Support vector machine(SVM) can be seen as a generalized version of linear classifier. SVM maps each instance into a higher dimensional feature space, and look for a hyperplane, which separate different classes. Hyperplane with large margin is preferred. All calculation of feature vectors with high dimension can be done efficiently via kernel function. Although new kernel functions are being purposed by researchers, four basic kernels are the most popular\cite{svm}:
 \begin{itemize}
 \item linear: $K(x_i,x_j)=x_i^Tx_j$\\
 \item polynomial: $K(x_i,x_j)=(\gamma x_i^Tx_j+r)^d$, $\gamma >0$\\
-\item radial basis function (RBF): $K(x_i,x_j)=\exp(-\gamma + \|x_i-x_j\|^2)$, $\gamma > 0$\\
+\item radial basis function (RBF): $K(x_i,x_j)=\exp(-\gamma \|x_i-x_j\|^2)$, $\gamma > 0$\\
 \item sigmoid: $K(x_i,x_j)=tanh(\gamma x_i^Tx_j+r)$\\
 \end{itemize}
+Here $\gamma$ and $r$ are kernel parameters.\\
 According to \cite{ssk} and \cite{ll}, linear kernel is a special case of RBF kernel, and sigmoid kernel behaves like RBF kernel with certain parameters. Thus in this paper, we only consider RBF kernels.\\
-There are many kinds of SVMs based on different error function. In this paper, we simply use C-svm, which minimize error function:
+There are many kinds of SVMs based on different error function. In this paper, we only consider C-svm, which minimize error function:
     $$\frac{1}{2}\|\vec{\beta}\|^2+C\sum_{i=1}^n \xi_i$$
  subject to:$$y_i(\vec{\beta}\cdot \vec{x_i}+\beta{0})\geq 1-\xi_i$$$$\forall i, \xi_i\geq 0$$
 
-Note that $C$ in the error function, and $\gamma$ in the RBF kernel function are tunable parameters. We can use grid-search\cite{svm}: construct exponential growth sequence of $C$ and $\gamma$, and use cross validation for each $C$ and $\gamma$ to find a ``good'' region. More accurate grid search is performed on that region to find the optimal(locally) parameters. In this paper, tools provided in libsvm\cite{libsvm} package are used to perform the model selection procedure automatically.\\
+ We use grid-search\cite{svm} to find parameter with optimal performance: construct exponential growth sequence of $C$ and $\gamma$, and use cross validation for each $C$ and $\gamma$ to find a ``good'' region. More accurate grid search is performed on that region to find the optimal(locally) parameters. In this paper, tools provided in libsvm\cite{libsvm} package are used to perform the model selection procedure automatically.\\
 As shown in Figure 3, the SVM tends to have the best performance when $C=2.0$ and $\gamma=0.0078125$, where the error rate is 4.2059\%.
 
 Comparing to decision tree, SVM has much better performance on this data set. This is because in this data set, a instance consists of large amount of features(256 0-1 attributes), which makes it more likely to be linearly separable. In fact, SVM with linear kernel can achieve 0\% training error when classifying any digit against the rest in Semeion data set. This indicates that there exists a hyperplane which can separate any class from other classes. This also implies that all digits are pairwise separable. Moreover, SVM can find hyperplane gives the largest margin, which makes the classifier generalize well on unseen data. As it is shown that linear kernel is a special case of RBF kernel\cite{ssk,ll}, it is not surprising that SVM with RBF kernel has good performance on this data set.
@@ -143,36 +146,44 @@ One observation from the algorithms is that neither decision tree nor SVM makes 
 
 \subsection{Features Extraction}
 One solution to this problem is to extract features which algorithms failed to capture. Feature extraction should be done before classification. In this paper, we extract several features derived from combination of pixels.\\
-We add 16 extra features $r[16]$, one for each row, which describes how many ``black segments'' are there in the row. For example, in a image of ``1'', most of $r[i]$ can be expected to be $1$; in a image of ``0'', most $r[i]$ can be expected to be 2, and a few can be 1. Similarly, $c[16]$ are extracted for each column. The variance of the number of black pixels in each row and column are also added into each example.\\
-Thus, 34 extra features are extracted. These features are appended after each instance. The modified data set has 290 features.
-\subsection{Testing On Modified Data Set}
+We add 16 extra features $r[16]$, one for each row, which describes how many ``black segments'' are there in the row. For example, in a image of ``1'', most of $r[i]$ can be expected to be $1$; in a image of ``0'', most $r[i]$ can be expected to be 2, and a few can be 1. Similarly, $c[16]$ are extracted for each column. The variance of the number of black pixels in each row and column are also added into each example. Thus, 34 extra features are extracted. These features are appended after each instance. The modified data set has 290 features.\\
+\subsection{Testing and Analysis}
 \vspace{0.5cm}
 \begin{tabular}{c c c}
 Algorithm		&	Original Data	&Modified Data\\
 \hline \hline
 C4.5                            &23.7916\%		& 18.5813\%\\
 Pairwise C4.5                   &15.5345\%      & 12.3899\%\\
-Boosted C4.5(32 iter)	        &7.7841\%		& 4.5198\%\\
-Boosted PW C4.5(32 iter)	    &6.8553\%       & 5.2830\%\\
+Boosted C4.5	                &7.7841\%		& 4.5198\%\\
+Boosted PW C4.5	                &6.8553\%       & 5.2830\%\\
 SVM                         	&4.2059\%       & 3.2643\%\\
 \end{tabular}
 \vspace{0.5cm}\\
-From the result, we can see that all algorithms' error rates on modified data drop to some extent.\\
-\subsection{Analysis}
-By ranking the information gain of all attributes of the data set, in top 15 features, 14 of them are newly added features; 21 out of total 34 new features ranks less than 30. \\
+All boosting algorithm in the testing use 32 iterations. From the result, we can see that all algorithms' error rates on modified data drops.\\
+After sorting the all attributes by their information gain, 14 out of 15 features are newly added features. 21 out of total 34 new features ranks in top 30.\\
 In the decision tree of the new data set, new features are made heavily used of. The size of the new tree is 229, which is smaller than the size of the tree of the old data set(293 nodes). Since smaller trees tends to generalize better, C4.5 can have better performance on the modified data set.\\
-SMO algorithm(in WEKA's implementation of SVM) gives 139 support vectors when trained by the whole original data set, while only 115 is obtained on the data set with new features. Although the number of features increases, the number of support vector decreases. The number of support vector can be seen as a measure of complexity of classifiers, thus SVM can have better performance on the new data set can be considered as the result of Occam's Razor principle.\\
+
 \subsection{Testing on MNIST Data set}
-MNIST(\url{http://yann.lecun.com/exdb/mnist/}) is a popular handwritten digit data set. This data set contains 60000 instances for training, and 10000 instances for testing.  Similar to Semeion data set, instances in MNIST data set consists of 28*28 pixels of a image, each pixel is described by the gray scale of the pixel. To make time cost feasible, we make a random sample of 1800 instances from the training set for training. The whole testing data set(10000 instance) is used for testing. This is because testing is relatively fast compared to training, and large testing set would give closer estimation to the real accuracy. The range of feature in the original data set is 0 to 256, which is too large. We normalize attributes of instances to range from 0 to 1. This is to avoid attributes in greater numeric ranges dominate those in smaller numeric ranges. Another advantage is to avoid numerical difficulties when calculating vector inner product\cite{svm}. We do not need to normalize the Semeion data set because the range of features are between 0 and 1 initially. Grid search shows that $C=8, \gamma=0.0078125$ gives optimal(locally) performance.\\
+MNIST(\url{http://yann.lecun.com/exdb/mnist/}) is a popular handwritten digit data set. This data set contains 60000 instances for training, and 10000 instances for testing.  Similar to Semeion data set, instances in MNIST data set consists of 28*28 pixels of a image, each pixel is described by the gray scale of the pixel. To make time cost feasible, we make a random sample of 1800 instances from the training set for training. The whole testing data set(10000 instance) is used for testing. This is because testing is relatively fast compared to training, and large testing set would give closer estimation to the true accuracy. The range of feature in the original data set is 0 to 256, which is too large. We normalize attributes of instances to range from 0 to 1. This is to avoid attributes in greater numeric ranges dominate those in smaller numeric ranges. Another advantage is to avoid numerical difficulties when calculating vector inner product\cite{svm}. We do not need to normalize the Semeion data set because the range of features are between 0 and 1 initially. Grid search shows that $C=8, \gamma=0.0078125$ gives optimal(locally) performance.\\
 \vspace{0.5cm}
-\begin{tabular}{c c}
-Data Set	& Error rate\\
+\begin{tabular}{c c c}
+Algorithm	              & MNIST	& MNIST(with new features)\\
 \hline \hline
-MNIST	                  & 6.4\%\\
-MNIST(extra features)	  & 5.72\%\\
+C4.5                     & 26.66\%  & 19.99\%\\
+Pairwise C4.5            &19.11\%   & 16.07\%\\
+Boosted C4.5             & 8.79\%	& 7.58 \%\\
+Boosted PW C4.5	         & 10.34\%  & 8.66 \%\\
+SVM                      & 5.72\%   & 6.4\%\\
+  \\
 \end{tabular}
 \vspace{0.5cm}\\
-The error rate reduces as expected when adding extra features. Thus feature extraction can be expected to work on general image classification problems.
+The error rate reduces as expected when adding extra features. Thus feature extraction can be expected to work on other image classification problems.\\
+
+\section{Discussion}
+This paper only discussed handwritten digit recognition, but methods mentioned in this paper also applies to other handwriting recognition problems in similar way.\\
+Pairwise C4.5(and Boosted Pairwise C4.5) has better performance compared to normal C4.5(and boosted C4.5). However, the time cost for training and testing is several times longer. It turns out that in this C4.5 based algorithms, the algorithm with better performance tend to has longer training and test time. This trade off needs to be considered in piratical application.\\
+Although feature extraction can improve classification performance, it can only extract small subset of information about pixel alignment and correlation data set. Large amount of information is still hidden inside the data set.\\
+We only test feature extraction on C4.5 and SVM. The effect of feature extraction on other algorithms are yet to be studied.\\
 
 \section{Further Work}
 \begin{itemize}
@@ -182,13 +193,9 @@ The error rate reduces as expected when adding extra features. Thus feature extr
  \item Whether feature extraction can improve performance of other classification algorithms.
  \item Study classification algorithms which can automatically extract features of correlation of pixels(e.g. convolutional neural network\cite{lecun98}).
 \end{itemize}
-\section{Discussion}
-This paper only discussed handwritten digit recognition, but methods mentioned in this paper also applies to other handwriting recognition problems in similar way.\\
-Although feature extraction can improve classification performance, it can only extract small amount of information about pixel alignment and correlation data set. \\
-We only test feature extraction on C4.5 and SVM. The effect on other algorithms are yet to be studied.\\
 
 \section{Conclusion}
-Comparing performance of different algorithms on on Semeion Data Set, C4.5 algorithm performs poorly, and adjusting parameters doesn't change the result much. Pairwise C4.5 performs better than C4.5. Boosted C4.5 and Boosted Pairwise C4.5 has a much better performance than C4.5. C-SVM with RBF kernel manages to reach 4.2059\% error rate after parameter search. By adding extracted features into the data set, the accuracy of all these algorithms improves, and SVM achieves the lowest error rate: 3.2643\%. Improvement of SVM is also observed on MNIST data set. Feature extraction can be expected to generalize on other image classification problems.
+Comparing performance of different algorithms on on Semeion Data Set, C4.5 algorithm performs poorly, and adjusting parameters doesn't change the result much. Pairwise C4.5 performs better than C4.5. Boosted C4.5 and Boosted Pairwise C4.5 has a much better performance than C4.5. C-SVM with RBF kernel manages to reach 4.2059\% error rate after parameter search. It is indicated that instances in Semeion data set are pairwise linearly separable. By adding extracted features into the data set, the accuracy of all these algorithms improves, and SVM achieves the lowest error rate: 3.2643\%. Improvement of SVM is also observed on MNIST data set. Feature extraction can be expected to generalize on other handwriting recognition problems.
 
 \newpage
 \bibliographystyle{plain}
