@@ -52,13 +52,13 @@ public class PairwiseJ48 extends Classifier implements
 		int numClass=data.numClasses();
 		Instances[][] trainSet = new Instances[numClass][numClass];
 		dt = new J48[numClass][numClass];
-		//String[] option = { "-C 1", "-M 20" };
 		for (int i = 0; i < numClass; i++)
 			for (int j = i + 1; j < numClass; j++) {
 				trainSet[i][j] = new Instances(data, 1);
 				dt[i][j] = new J48();
+				String[] option = { "-C 0.5", "-M 1" };
 				try {
-					//dt[i][j].setOptions(option);
+					dt[i][j].setOptions(option);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

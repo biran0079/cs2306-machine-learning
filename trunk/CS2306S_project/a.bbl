@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{libsvm}
 Chih-Chung Chang and Chih-Jen Lin.
@@ -30,6 +30,12 @@ H.-T. Lin and C.-J. Lin.
   kernels by {SMO}-type methods.
 \newblock {\em Technical report, Department of Computer Science, National
   Taiwan University}, 2003.
+
+\bibitem{weka}
+Geoffrey Holmes Bernhard Pfahringer Peter Reutemann Ian H.~Witten Mark~Hall,
+  Eibe~Frank.
+\newblock {The WEKA Data Mining Software}, 2009.
+\newblock http://www.cs.waikato.ac.nz/ml/weka/.
 
 \bibitem{morgan.kaufmann}
 Morgan.Kaufmann.

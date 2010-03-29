@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2009.12.23)  29 MAR 2010 00:53
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2009.12.23)  29 MAR 2010 21:30
 entering extended mode
 **a.tex
 (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.tex
@@ -206,25 +206,36 @@ C:/Users/BiRan/Desktop/cs2306-machine-learning/CS2306S_project/unclear.jpg>]
 LaTeX Font Warning: Font shape `U/bbold/m/n' in size <5> not available
 (Font)              size <6> substituted on input line 72.
 
+
+Overfull \hbox (20.14914pt too wide) in paragraph at lines 70--82
+\OT1/cmr/m/n/10.95 There are sev-eral meth-ods to do this con-ver-sion, we only
+ con-sider ``pairwise''(one-
+ []
+
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 83--103
+Underfull \hbox (badness 10000) in paragraph at lines 83--102
 
  []
 
 [5]
-Overfull \hbox (2.415pt too wide) in paragraph at lines 104--117
+Overfull \hbox (2.415pt too wide) in paragraph at lines 103--116
 \OT1/cmr/m/n/10.95 The re-sult shows that boosted Pair-wise C4.5 al-go-rithm ov
 er per-forms boosted
  []
 
 [6]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 121.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 120.
 
  (C:\CTEX\MiKTeX\tex\latex\base\omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 121.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 120.
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
+
+ []
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 121--122
 
@@ -240,11 +251,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 123--124
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
-
- []
-
 [7] <digit.jpg, id=41, 481.8pt x 361.35pt>
 File: digit.jpg Graphic file (type jpg)
  <use digit.jpg>
@@ -253,32 +259,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 144--145
  []
 
 [8 <C:/Users/BiRan/Desktop/cs2306-machine-learning/CS2306S_project/digit.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 152--163
+Underfull \hbox (badness 10000) in paragraph at lines 147--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--167
+Underfull \hbox (badness 10000) in paragraph at lines 151--164
 
  []
 
-[9] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 188--191
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 166--179
 
  []
 
-[11] (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.bbl)
-[12] (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--184
+
+ []
+
+[10] [11] (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.bbl
+) [12] (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 2084 strings out of 495285
- 24584 string characters out of 3181586
- 78150 words of memory out of 3000000
- 5248 multiletter control sequences out of 15000+200000
+ 2085 strings out of 495285
+ 24590 string characters out of 3181586
+ 78154 words of memory out of 3000000
+ 5249 multiletter control sequences out of 15000+200000
  16091 words of font info for 67 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  27i,8n,24p,1190b,248s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -293,7 +304,7 @@ amsfonts/cm/cmr8.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C
 :/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/CTEX/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmti10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmtt10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on a.pdf (12 pages, 304475 bytes).
+Output written on a.pdf (12 pages, 303627 bytes).
 PDF statistics:
  104 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
