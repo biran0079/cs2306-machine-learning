@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2009.12.23)  24 MAR 2010 23:38
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2009.12.23)  29 MAR 2010 00:53
 entering extended mode
 **a.tex
 (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.tex
@@ -181,114 +181,107 @@ LaTeX Font Info:    Try loading font information for U+lasy on input line 15.
 
 (C:\CTEX\MiKTeX\tex\latex\base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-)
-Overfull \hbox (0.9173pt too wide) in paragraph at lines 17--18
-[]\OT1/cmr/m/n/10 Handwritten dig-its recog-ni-tion is a clas-sic prob-lem of m
-a-chine learn-
- []
+) [1
 
-[1
-
-{C:/CTEX/UserData/pdftex/config/pdftex.map{Unicode.sfd}{UGBK.sfd}}]
-<clear.jpg, id=10, 778.40813pt x 76.78688pt>
+{C:/CTEX/UserData/pdftex/config/pdftex.map{Unicode.sfd}{UGBK.sfd}}] <clear.jpg,
+ id=10, 778.40813pt x 76.78688pt>
 File: clear.jpg Graphic file (type jpg)
- <use clear.jpg>
-<unclear.jpg, id=11, 760.34062pt x 83.5622pt>
+
+<use clear.jpg> <unclear.jpg, id=11, 760.34062pt x 83.5622pt>
 File: unclear.jpg Graphic file (type jpg)
- <use unclear.jpg>
-Underfull \hbox (badness 10000) in paragraph at lines 45--61
+
+<use unclear.jpg>
+Underfull \hbox (badness 10000) in paragraph at lines 45--47
 
  []
 
-[2 <C:/Users/BiRan/Desktop/cs2306-machine-learning/CS2306S_project/clear.jpg> <
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 49--64
+
+ []
+
+[3 <C:/Users/BiRan/Desktop/cs2306-machine-learning/CS2306S_project/clear.jpg> <
 C:/Users/BiRan/Desktop/cs2306-machine-learning/CS2306S_project/unclear.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 63--80
-
- []
-
-[3]
 
 LaTeX Font Warning: Font shape `U/bbold/m/n' in size <5> not available
-(Font)              size <6> substituted on input line 88.
+(Font)              size <6> substituted on input line 72.
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 99--118
+Underfull \hbox (badness 10000) in paragraph at lines 83--103
 
  []
 
 [5]
-Overfull \hbox (2.415pt too wide) in paragraph at lines 119--132
+Overfull \hbox (2.415pt too wide) in paragraph at lines 104--117
 \OT1/cmr/m/n/10.95 The re-sult shows that boosted Pair-wise C4.5 al-go-rithm ov
 er per-forms boosted
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--132
-
- []
-
 [6]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 136.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 121.
 
  (C:\CTEX\MiKTeX\tex\latex\base\omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 136.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 121.
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--137
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 137--138
+Underfull \hbox (badness 10000) in paragraph at lines 121--122
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 138--139
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--140
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
 
  []
 
-<digit.jpg, id=35, 481.8pt x 361.35pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
+
+ []
+
+[7] <digit.jpg, id=41, 481.8pt x 361.35pt>
 File: digit.jpg Graphic file (type jpg)
  <use digit.jpg>
-Underfull \hbox (badness 10000) in paragraph at lines 157--159
+Underfull \hbox (badness 10000) in paragraph at lines 144--145
 
  []
 
-[7] [8 <C:/Users/BiRan/Desktop/cs2306-machine-learning/CS2306S_project/digit.jp
-g>]
-Underfull \hbox (badness 10000) in paragraph at lines 167--178
+[8 <C:/Users/BiRan/Desktop/cs2306-machine-learning/CS2306S_project/digit.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 152--163
 
  []
 
-[9]
-Overfull \hbox (0.68135pt too wide) in paragraph at lines 199--200
-[]\OT1/cmr/m/n/10.95 Apply other method to build multi-class C4.5 based on bi-n
-ary C4.5(e.g.
+
+Underfull \hbox (badness 10000) in paragraph at lines 164--167
+
  []
 
-[10] (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.bbl)
-[11] (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.aux)
+[9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 188--191
+
+ []
+
+[11] (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.bbl)
+[12] (C:\Users\BiRan\Desktop\cs2306-machine-learning\CS2306S_project\a.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 2082 strings out of 495285
- 24572 string characters out of 3181586
- 78147 words of memory out of 3000000
- 5246 multiletter control sequences out of 15000+200000
- 15783 words of font info for 66 fonts, out of 3000000 for 9000
+ 2084 strings out of 495285
+ 24584 string characters out of 3181586
+ 78150 words of memory out of 3000000
+ 5248 multiletter control sequences out of 15000+200000
+ 16091 words of font info for 67 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 27i,8n,24p,1027b,248s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,8n,24p,1190b,248s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/CTEX/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmbx12.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmex10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:
@@ -300,9 +293,9 @@ amsfonts/cm/cmr8.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C
 :/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/CTEX/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmti10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/
 cm/cmtt10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on a.pdf (11 pages, 297880 bytes).
+Output written on a.pdf (12 pages, 304475 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
+ 104 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
