@@ -1,28 +1,67 @@
 This is BibTeX, Version 0.99cThe top-level auxiliary file: a.aux
-The style file: plain.bst
+The style file: nurop.bst
 Database file #1: ref.bib
 Too many commas in name 1 of "LeCun, Bottou, Bengio, Haffner" for entry lecun98
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Robert E. Schapire,Yoav Freund,Peter Bartlett,Wee Sun Lee" for entry boosting
-while executing---line 1049 of file plain.bst
-Name 1 in "Chih-Wei Hsu, Chih-Chung Chang, and Chih-Jen Lin" has a comma at the end for entry svm
-while executing---line 1049 of file plain.bst
-Name 1 in "Chih-Wei Hsu, Chih-Chung Chang, and Chih-Jen Lin" has a comma at the end for entry svm
-while executing---line 1090 of file plain.bst
+while executing---line 1289 of file nurop.bst
 Too many commas in name 1 of "LeCun, Bottou, Bengio, Haffner" for entry lecun98
-while executing---line 1090 of file plain.bst
+while executing---line 1289 of file nurop.bst
+Too many commas in name 1 of "LeCun, Bottou, Bengio, Haffner" for entry lecun98
+while executing---line 1289 of file nurop.bst
 Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
-while executing---line 1090 of file plain.bst
+while executing---line 1289 of file nurop.bst
 Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
-while executing---line 1090 of file plain.bst
+while executing---line 1289 of file nurop.bst
 Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
-while executing---line 1090 of file plain.bst
+while executing---line 1289 of file nurop.bst
+Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
+while executing---line 1289 of file nurop.bst
+Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
+while executing---line 1289 of file nurop.bst
+Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
+while executing---line 1289 of file nurop.bst
+Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
+while executing---line 1289 of file nurop.bst
+Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
+while executing---line 1289 of file nurop.bst
+Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
+while executing---line 1289 of file nurop.bst
 Too many commas in name 1 of "Robert E. Schapire,Yoav Freund,Peter Bartlett,Wee Sun Lee" for entry boosting
-while executing---line 1090 of file plain.bst
-(There were 12 error messages)
+while executing---line 1289 of file nurop.bst
+Too many commas in name 1 of "Robert E. Schapire,Yoav Freund,Peter Bartlett,Wee Sun Lee" for entry boosting
+while executing---line 1289 of file nurop.bst
+Too many commas in name 1 of "Robert E. Schapire,Yoav Freund,Peter Bartlett,Wee Sun Lee" for entry boosting
+while executing---line 1289 of file nurop.bst
+Name 1 in "Chih-Wei Hsu, Chih-Chung Chang, and Chih-Jen Lin" has a comma at the end for entry svm
+while executing---line 1289 of file nurop.bst
+Name 1 in "Chih-Wei Hsu, Chih-Chung Chang, and Chih-Jen Lin" has a comma at the end for entry svm
+while executing---line 1289 of file nurop.bst
+Name 1 in "Chih-Wei Hsu, Chih-Chung Chang, and Chih-Jen Lin" has a comma at the end for entry svm
+while executing---line 1289 of file nurop.bst
+Name 1 in "Chih-Wei Hsu, Chih-Chung Chang, and Chih-Jen Lin" has a comma at the end for entry svm
+while executing---line 1371 of file nurop.bst
+`month' is a missing field, not a string, for entry fabien06
+while executing---line 1371 of file nurop.bst
+`month' is a missing field, not a string, for entry ssk
+while executing---line 1371 of file nurop.bst
+`month' is a missing field, not a string, for entry dtnpc
+while executing---line 1371 of file nurop.bst
+Too many commas in name 1 of "LeCun, Bottou, Bengio, Haffner" for entry lecun98
+while executing---line 1371 of file nurop.bst
+`month' is a missing field, not a string, for entry lecun98
+while executing---line 1371 of file nurop.bst
+`month' is a missing field, not a string, for entry ll
+while executing---line 1371 of file nurop.bst
+Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
+while executing---line 1371 of file nurop.bst
+Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
+while executing---line 1371 of file nurop.bst
+Too many commas in name 1 of "Mark Hall, Eibe Frank, Geoffrey Holmes, Bernhard Pfahringer, Peter Reutemann, Ian H. Witten" for entry weka
+while executing---line 1371 of file nurop.bst
+Warning--empty address in morgan.kaufmann
+Too many commas in name 1 of "Robert E. Schapire,Yoav Freund,Peter Bartlett,Wee Sun Lee" for entry boosting
+while executing---line 1371 of file nurop.bst
+`month' is a missing field, not a string, for entry boosting
+while executing---line 1371 of file nurop.bst
+`month' is a missing field, not a string, for entry slg92
+while executing---line 1371 of file nurop.bst
+(There were 31 error messages)
