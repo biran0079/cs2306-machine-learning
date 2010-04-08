@@ -1,66 +1,67 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{10}
 
-\bibitem[\protect\citename{Chang}{}{Lin}{Chang-Lin}{2001}{libsvm}]{libsvm}
-Chang, C.-C., \& Lin, C.-J. (2001).
-\newblock {LIBSVM: a library for support vector machines}.
+\bibitem{libsvm}
+Chih-Jen~Lin Chih-Chung~Chang.
+\newblock {LIBSVM: a library for support vector machines}, 2001.
 \newblock http://www.csie.ntu.edu.tw/~cjlin/libsvm.
 
-\bibitem[\protect\citename{Chih-Wei~Hsu}{}{Lin}{Chih-Wei~Hsu-Lin}{2009}{svm}]{%
-svm}
-Chih-Wei~Hsu, C.-C.~C., \& Lin, C.-J. (2009).
-\newblock {\em A practical guide to support vector classification}.
+\bibitem{svm}
+Chih-Jen~Lin Chih-Wei~Hsu, Chih-Chung~Chang.
+\newblock {\em A Practical Guide to Support Vector Classification}, 2009.
 
-\bibitem[\protect\citename{Fabien~Lauer}{}{Bloch}{Fabien~Lauer-Bloch}{2007}{fa%
-bien06}]{fabien06}
-Fabien~Lauer, C. Y. S.~b., \& Bloch, G. (2007).
+\bibitem{fabien06}
+Gerard~Bloch Fabien~Lauer, Ching Y. Suen~b.
 \newblock A trainable feature extractor for handwritten digit recognition.
-\newblock {\em Pattern Recognition}, {\em 40\/}, 2007.
+\newblock {\em Pattern Recognition}, 40, 2007.
 
-\bibitem[\protect\citename{Keerthi}{}{Lin}{Keerthi-Lin}{2003}{ssk}]{ssk}
-Keerthi, S.~S., \& Lin, C.-J. (2003).
-\newblock Asymptotic behaviors of support vector machines with gaussian kernel.
-\newblock {\em Neural Computation}, , 2003.
-
-\bibitem[\protect\citename{Laurent~Hyafil}{}{}{Laurent~Hyafil}{1976}{dtnpc}]{d%
-tnpc}
-Laurent~Hyafil, R.~R. (1976).
-\newblock Constructing optimal binary decision trees is {NP-complete}.
-\newblock {\em Information Processing Letters}, , 1976.
-
-\bibitem[\protect\citename{LeCun}{}{}{LeCun}{1998}{lecun98}]{lecun98}
-LeCun, Bottou, B.~H. (1998).
-\newblock Gradient-based learning applied to document recognition.
-\newblock {\em Proceedings of the IEEE}, , 1998.
-
-\bibitem[\protect\citename{Lin}{}{Lin}{Lin-Lin}{2003}{ll}]{ll}
-Lin, H.-T., \& Lin, C.-J. (2003).
+\bibitem{ll}
+Chih-Jen~Lin Hsuan-Tien~Lin.
 \newblock A study on sigmoid kernels for {SVM} and the training of {non-PSD}
   kernels by {SMO}-type methods.
 \newblock {\em Technical report, Department of Computer Science, National
-  Taiwan University}, , 2003.
+  Taiwan University}, 2003.
 
-\bibitem[\protect\citename{Mark~Hall}{}{}{Mark~Hall}{2009}{weka}]{weka}
-Mark~Hall, Eibe~Frank, G. H. B. P. P. R. I. H.~W. (2009).
-\newblock {The WEKA Data Mining Software}.
-\newblock http://www.cs.waikato.ac.nz/ml/weka/.
+\bibitem{morgan.kaufmann}
+Morgan Kaufmann.
+\newblock {\em Data Mining Practical Machine Learning Tools}.
+\newblock Morgan Kaufmann Publishers, second edition, 2005.
 
-\bibitem[\protect\citename{Morgan.Kaufmann}{}{}{Morgan.Kaufmann}{2005}{morgan.%
-kaufmann}]{morgan.kaufmann}
-Morgan.Kaufmann (2005).
-\newblock {\em Data mining practical machine learning tools}.
-\newblock morgan kaufmann publishers, second edition.
-
-\bibitem[\protect\citename{Robert E.~Schapire}{}{}{Robert
-  E.~Schapire}{1998}{boosting}]{boosting}
-Robert E.~Schapire, Yoav~Freund, P. B. W. S.~L. (1998).
-\newblock Boosting the margin:a new explanation for the effectiveness of voting
-  methods.
-\newblock {\em The Annals of Statistics}, , 1998.
-
-\bibitem[\protect\citename{S.~KNERR}{}{}{S.~KNERR}{1992}{slg92}]{slg92}
-S.~KNERR, L.~PERSONNAZ, G.~D. (1992).
+\bibitem{slg92}
+Dreyfus~G Knerr~S, Personnaz~L.
 \newblock Handwritten digit recognition by neural networks with single-layer
   training.
-\newblock {\em IEEE TRANSACTIONS ON NEURAL NETWORKS}, , 1992.
+\newblock {\em IEEE Transactions on Neural Networks}, 1992.
+
+\bibitem{dtnpc}
+Ronald L.~Rivest Laurent~Hyafil.
+\newblock Constructing optimal binary decision trees is {NP-complete}.
+\newblock {\em Information Processing Letters}, 1976.
+
+\bibitem{lecun98}
+Bengio~Haffner LeCun, Bottou.
+\newblock Gradient-based learning applied to document recognition.
+\newblock {\em Proceedings of the IEEE}, 1998.
+
+\bibitem{weka}
+Geoffrey Holmes Bernhard Pfahringer Peter Reutemann Ian H.~Witten Mark~Hall,
+  Eibe~Frank.
+\newblock {The WEKA Data Mining Software}, 2009.
+\newblock http://www.cs.waikato.ac.nz/ml/weka/.
+
+\bibitem{boosting}
+Peter Bartlett Wee Sun~Lee Robert E.~Schapire, Yoav~Freund.
+\newblock Boosting the margin:a new explanation for the effectiveness of voting
+  methods.
+\newblock {\em The Annals of Statistics}, 1998.
+
+\bibitem{ssk}
+Chih-Jen~Lin S.~Sathiya~Keerthi.
+\newblock Asymptotic behaviors of support vector machines with gaussian kernel.
+\newblock {\em Neural Computation}, 2003.
+
+\bibitem{semeion}
+Semeion Research~Center Tactile~Srl, Brescia.
+\newblock semeion handwritten digit data set, 1994.
+\newblock http://archive.ics.uci.edu/ml/datasets/Semeion+Handwritten+Digit.
 
 \end{thebibliography}
